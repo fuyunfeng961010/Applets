@@ -1,0 +1,33 @@
+/* home.wxss */
+
+page {
+    height: 100%;
+    background: #F8F8F8;
+}
+
+.home-container {
+    padding-top: 60rpx;
+}
+
+.home-container .container{
+    display: block;
+    box-sizing: border-box;
+    padding: 0 80rpx;
+    width: 100%;
+    margin-bottom: 60rpx;
+}
+
+.home-container .border-top {
+    width: 100%; 
+    height: 1rpx; 
+    border-top: 1rpx solid #EAEAEA;
+}
+
+
+.weui-media-box__hd {
+    margin-right:25rpx;
+    width:400rpx;
+    height:170rpx;
+    line-height:200rpx;
+    text-align:center;
+}

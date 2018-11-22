@@ -1,0 +1,37 @@
+<!--home.wxml-->
+<view class="home-container">
+  <view class="container">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="border-top"></view>
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" wx:for="{{dataList}}" wx:key="{{index}}">
+        <div class="weui-media-box__hd">
+          <image class="weui-media-box__thumb" 
+            src="{{item.imgUrl}}"
+            alt=""
+            id="{{item.id}}"
+            bindtap="bindListTap">
+          </image>
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title" id="{{item.id}}" bindtap="bindListTap">{{item.title}}</h4>
+          <p class="weui-media-box__desc" id="{{item.id}}" bindtap="bindListTap">{{item.content}}</p>
+        </div>
+      </a>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">查看更多</div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+</view>
