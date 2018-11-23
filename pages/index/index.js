@@ -56,6 +56,14 @@ Page({
 				}
 			})
 		}
+
+		// wx.showToast({
+		// 	title: '成功',
+		// 	icon: 'success',
+		// 	mask: true,
+		// 	duration: 2000
+
+		// })
 	},
 	// 点击开始 确认赋权后自动跳转首页
 	getUserInfo: function (e) {

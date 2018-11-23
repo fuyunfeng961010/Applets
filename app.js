@@ -11,16 +11,16 @@ App({
       success: res => {
         // console.log(res)
         this.globalData.code = res.code
-        wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx38e9f9835b60acec&secret=078870fc1288cc4ac0ffe7a4ec468347&js_code='+ res.code +'&grant_type=authorization_code',
-          data: {},
-          header: {
-              'content-type': 'application/json'
-          },
-          success: function(res) {
-            // openid = res.data.openid //返回openid
-          }
-        })
+        // wx.request({
+        //   url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx38e9f9835b60acec&secret=078870fc1288cc4ac0ffe7a4ec468347&js_code='+ res.code +'&grant_type=authorization_code',
+        //   data: {},
+        //   header: {
+        //       'content-type': 'application/json'
+        //   },
+        //   success: function(res) {
+        //     // openid = res.data.openid //返回openid
+        //   }
+        // })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
