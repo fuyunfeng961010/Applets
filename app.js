@@ -9,7 +9,7 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // console.log(res)
+        console.log(res)
         this.globalData.code = res.code
         // wx.request({
         //   url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx38e9f9835b60acec&secret=078870fc1288cc4ac0ffe7a4ec468347&js_code='+ res.code +'&grant_type=authorization_code',

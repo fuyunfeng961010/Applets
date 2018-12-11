@@ -34,25 +34,15 @@ Page({
   onLoad() {
     wx.request({
       method: "POST",
-      url: 'http://120.79.220.248:9091/user/login',
+      url: 'https://top2-dev.xianglin.cn/userApply/getzyUserInfoDetail.json',
       data: {
-        userName: "fuyf",
-        password: "123456",
+        custNo:"CU1000000000000000000482",
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
         console.log(res)
-        if (res.data.code == 2000) {
-          wx.showToast({
-          	title: '登录成功',
-          	icon: 'success',
-          	mask: true,
-          	duration: 2000
-
-          })
-        }
       }
     })
   },
