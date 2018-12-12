@@ -34,15 +34,16 @@ Page({
   onLoad() {
     wx.request({
       method: "POST",
-      url: 'https://top2-dev.xianglin.cn/userApply/getzyUserInfoDetail.json',
+      url: 'https://applets-admin.fuyunfeng.top/user/login',
       data: {
-        custNo:"CU1000000000000000000482",
+        password: "123456",
+        userName: "fuyf"
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res)
+        // console.log(res)
       }
     })
   },
