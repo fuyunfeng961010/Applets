@@ -2,6 +2,8 @@
  * Promise化小程序接口
  * @Fuyf 2018/12/17
  */
+
+//请求域名前缀 
 let domain = 'http://172.16.12.145:9090';
 
 class Wechat {
@@ -38,7 +40,28 @@ class Wechat {
                 fail: reject
             }
             wx.request(opts);
-        });
+        })
+            .then( data => {
+                if(data.data.code != 2000) {
+                   return this.errDialog(data.data.message) 
+                }
+                return Promise.resolve(data);
+            })
+
+        // let opts = {
+        //     url: domain + url,
+        //     data: Object.assign({}, params),
+        //     method: method,
+        //     header: { 'Content-Type': type },
+        //     success: (data)=> {
+        //         console.log(data)
+        //         return Promise.resolve(data);
+        //     },
+        //     fail: (e)=> {
+        //         return Promise.reject(e);
+        //     }
+        // }
+        // wx.request(opts);
     };
 
     /**

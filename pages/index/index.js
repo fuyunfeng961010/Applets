@@ -33,22 +33,26 @@ Page({
 			// 	url: '../home/home'
 			// })
 		} else if (this.data.canIUse) {
-			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回 所以加入 callback 以防止这种情况
+			
 			wx.getSetting({
 				success: res => {
+					// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 					if (res.authSetting['scope.userInfo']) {
-						// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 						wechat.getCryptoData()
 							.then(data => {
 								return wechat.getMyOpenid(data)
 							})
-							.then(data => {
-								console.log(data)
+							.then( data => {
+								if(data) {
+									console.log(data)
+								}
+								
 							})
 							.catch(e => {
 								console.log(e)
 							})
 
+						// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回 所以加入 callback 以防止这种情况
 						wechat.getUserInfoCallBack = (data) => {
 							app.globalData.userInfo = data;
 							this.setData({
@@ -64,8 +68,8 @@ Page({
 			// 在没有 open-type=getUserInfo 版本的兼容处理
 			wx.getSetting({
 				success: res => {
+					// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 					if (res.authSetting['scope.userInfo']) {
-						// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 						wechat.getCryptoData()
 							.then(data => {
 								return wechat.getMyOpenid(data)
@@ -89,13 +93,7 @@ Page({
 
 			})
 		}
-		// 微信弹窗 test
-		// wx.showToast({
-		// 	title: '成功',
-		// 	icon: 'success',
-		// 	mask: true,
-		// 	duration: 2000
-		// })
+		
 	},
 
 
