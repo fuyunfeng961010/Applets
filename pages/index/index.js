@@ -1,5 +1,7 @@
-//index.js
-//获取应用实例
+// 引入wechat.js
+let wechat = require('../../utils/wechat.js');
+
+//获取App 应用实例
 const app = getApp()
 
 Page({
@@ -26,57 +28,104 @@ Page({
 				userInfo: app.globalData.userInfo,
 				hasUserInfo: true
 			})
-			wx.switchTab({
-				url: '../home/home'
-			})
+
+			// wx.switchTab({
+			// 	url: '../home/home'
+			// })
 		} else if (this.data.canIUse) {
-			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-			// 所以此处加入 callback 以防止这种情况
-			app.userInfoReadyCallback = res => {
-				this.setData({
-					userInfo: res.userInfo,
-					hasUserInfo: true
-				})
-				wx.switchTab({
-					url: '../home/home'
-				})
-			}
+			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回 所以加入 callback 以防止这种情况
+			wx.getSetting({
+				success: res => {
+					if (res.authSetting['scope.userInfo']) {
+						// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+						wechat.getCryptoData()
+							.then(data => {
+								return wechat.getMyOpenid(data)
+							})
+							.then(data => {
+								console.log(data)
+							})
+							.catch(e => {
+								console.log(e)
+							})
+
+						wechat.getUserInfoCallBack = (data) => {
+							app.globalData.userInfo = data;
+							this.setData({
+								userInfo: data,
+								hasUserInfo: true
+							})
+						}
+					}
+				}
+
+			})
 		} else {
 			// 在没有 open-type=getUserInfo 版本的兼容处理
-			wx.getUserInfo({
+			wx.getSetting({
 				success: res => {
-					app.globalData.userInfo = res.userInfo
-					this.setData({
-						userInfo: res.userInfo,
-						hasUserInfo: true
-					})
-					wx.switchTab({
-						url: '../home/home'
-					})
+					if (res.authSetting['scope.userInfo']) {
+						// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+						wechat.getCryptoData()
+							.then(data => {
+								return wechat.getMyOpenid(data)
+							})
+							.then(data => {
+								console.log(data)
+							})
+							.catch(e => {
+								console.log(e)
+							})
+
+						wechat.getUserInfoCallBack = (data) => {
+							app.globalData.userInfo = data;
+							this.setData({
+								userInfo: data,
+								hasUserInfo: true
+							})
+						}
+					}
 				}
+
 			})
 		}
-
+		// 微信弹窗 test
 		// wx.showToast({
 		// 	title: '成功',
 		// 	icon: 'success',
 		// 	mask: true,
 		// 	duration: 2000
-
 		// })
 	},
-	// 点击开始 确认赋权后自动跳转首页
+
+
+	/**
+	 * 用户点击开始体验 确认授权后
+	 * 通过wx.login 接口 获取临时code码  通过 getUserInfo 获取用户加密信息
+	 * 发送临时code码 与用户基本信息参数到后台获取 openId 与解码后的信息
+	 * @Fuyf 2018/12/17
+	 */
+
 	getUserInfo: function (e) {
-		console.log(e)
+		let userInfo = e.detail.userInfo;
 		if (e.detail.userInfo) {
-			app.globalData.userInfo = e.detail.userInfo
+			app.globalData.userInfo = userInfo;
 			this.setData({
-				userInfo: e.detail.userInfo,
+				userInfo: data,
 				hasUserInfo: true
 			})
-			wx.switchTab({
-				url: '../home/home'
-			})
+
+			wechat.getCryptoData()
+				.then(data => {
+					return wechat.getMyOpenid(data)
+				})
+				.then(data => {
+					console.log(data)
+				})
+				.catch(e => {
+					console.log(e)
+				})
+
 		}
 	},
 

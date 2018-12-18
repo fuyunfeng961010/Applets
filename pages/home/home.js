@@ -34,7 +34,7 @@ Page({
   onLoad() {
     wx.request({
       method: "POST",
-      url: 'https://applets-admin.fuyunfeng.top/user/login',
+      url: 'http://172.16.12.145:9090/user/login',
       data: {
         password: "123456",
         userName: "fuyf"
