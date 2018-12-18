@@ -9,6 +9,9 @@ App({
 		// logs.unshift(Date.now())
 		// wx.setStorageSync('logs', logs)
 
+		// wechat只引入一次 赋值给全局 globalData.wechat
+		this.globalData.wechat = wechat;
+
 		// ajax错误统一弹窗
 		wechat.errDialog = msg => {
 			wx.showToast({
@@ -26,8 +29,9 @@ App({
 
 
 
-
+	// 全局globalData变量
 	globalData: {
-		userInfo: null,
+		userInfo: null,//用户基本信息 openId 与 解密信息
+		wechat: null,//Promise化小程序接口 封装
 	}
 })

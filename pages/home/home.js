@@ -1,8 +1,5 @@
 // pages/home/home.js  首页
 
-// 引入wechat.js
-let wechat = require('../../utils/wechat.js');
-
 //获取App 应用实例
 const app = getApp()
 

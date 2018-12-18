@@ -1,8 +1,5 @@
 // pages/listMore/listMore.js  首页列表 查看更多
 
-// 引入wechat.js
-let wechat = require('../../utils/wechat.js');
-
 //获取App 应用实例
 const app = getApp()
 

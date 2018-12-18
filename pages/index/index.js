@@ -1,10 +1,10 @@
 // pages/index/index.js  身份确认 appId获取
 
-// 引入wechat.js
-let wechat = require('../../utils/wechat.js');
-
 //获取App 应用实例
 const app = getApp()
+
+// 定义wechat.js
+const wechat = app.globalData.wechat;
 
 Page({
 	data: {
