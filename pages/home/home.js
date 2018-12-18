@@ -1,4 +1,9 @@
-//home.js
+// 引入wechat.js
+let wechat = require('../../utils/wechat.js');
+
+//获取App 应用实例
+const app = getApp()
+
 Page({
   data: {
     imgUrls: [
@@ -32,6 +37,7 @@ Page({
     ],
   },
   onLoad() {
+    console.log(app.globalData.userInfo)
     wx.request({
       method: "POST",
       url: 'http://172.16.12.145:9090/user/login',

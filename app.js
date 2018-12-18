@@ -26,8 +26,7 @@ App({
 
 
 
-globalData: {
-	userInfo: null,
-		code: '',
+	globalData: {
+		userInfo: null,
 	}
 })

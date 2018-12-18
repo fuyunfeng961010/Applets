@@ -27,13 +27,11 @@ Page({
 			this.setData({
 				userInfo: app.globalData.userInfo,
 				hasUserInfo: true
+			},()=> {
+				this.bindViewTap()
 			})
 
-			// wx.switchTab({
-			// 	url: '../home/home'
-			// })
 		} else if (this.data.canIUse) {
-			
 			wx.getSetting({
 				success: res => {
 					// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
@@ -42,24 +40,22 @@ Page({
 							.then(data => {
 								return wechat.getMyOpenid(data)
 							})
-							.then( data => {
-								if(data) {
-									console.log(data)
+							.then(data => {
+								if (data) {
+									// 用户openId及解密信息存储
+									app.globalData.userInfo = data.data.data;
+									this.setData({
+										userInfo: data.data.data,
+										hasUserInfo: true
+									},()=> {
+										this.bindViewTap()
+									})
 								}
-								
+
 							})
 							.catch(e => {
 								console.log(e)
 							})
-
-						// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回 所以加入 callback 以防止这种情况
-						wechat.getUserInfoCallBack = (data) => {
-							app.globalData.userInfo = data;
-							this.setData({
-								userInfo: data,
-								hasUserInfo: true
-							})
-						}
 					}
 				}
 
@@ -75,25 +71,26 @@ Page({
 								return wechat.getMyOpenid(data)
 							})
 							.then(data => {
-								console.log(data)
+								if (data) {
+									// 用户openId及解密信息存储
+									app.globalData.userInfo = data.data.data;
+									this.setData({
+										userInfo: data.data.data,
+										hasUserInfo: true
+									},()=> {
+										this.bindViewTap()
+									})
+								}
 							})
 							.catch(e => {
 								console.log(e)
 							})
-
-						wechat.getUserInfoCallBack = (data) => {
-							app.globalData.userInfo = data;
-							this.setData({
-								userInfo: data,
-								hasUserInfo: true
-							})
-						}
 					}
 				}
 
 			})
 		}
-		
+
 	},
 
 
@@ -105,20 +102,24 @@ Page({
 	 */
 
 	getUserInfo: function (e) {
-		let userInfo = e.detail.userInfo;
-		if (e.detail.userInfo) {
-			app.globalData.userInfo = userInfo;
-			this.setData({
-				userInfo: data,
-				hasUserInfo: true
-			})
 
+		if (e.detail.userInfo) {
 			wechat.getCryptoData()
 				.then(data => {
 					return wechat.getMyOpenid(data)
 				})
 				.then(data => {
-					console.log(data)
+					if (data) {
+						// 用户openId及解密信息存储
+						app.globalData.userInfo = data.data.data;
+						this.setData({
+							userInfo: data.data.data,
+							hasUserInfo: true
+						},()=> {
+							this.bindViewTap()
+						})
+					}
+
 				})
 				.catch(e => {
 					console.log(e)

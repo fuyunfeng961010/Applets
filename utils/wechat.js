@@ -5,6 +5,7 @@
 
 //请求域名前缀 
 let domain = 'http://172.16.12.145:9090';
+// let domain = 'https://applets-admin.fuyunfeng.top';
 
 class Wechat {
     /**
@@ -42,26 +43,11 @@ class Wechat {
             wx.request(opts);
         })
             .then( data => {
-                if(data.data.code != 2000) {
+                if(data.data.code && data.data.code != 2000) {
                    return this.errDialog(data.data.message) 
                 }
                 return Promise.resolve(data);
             })
-
-        // let opts = {
-        //     url: domain + url,
-        //     data: Object.assign({}, params),
-        //     method: method,
-        //     header: { 'Content-Type': type },
-        //     success: (data)=> {
-        //         console.log(data)
-        //         return Promise.resolve(data);
-        //     },
-        //     fail: (e)=> {
-        //         return Promise.reject(e);
-        //     }
-        // }
-        // wx.request(opts);
     };
 
     /**
