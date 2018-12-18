@@ -1,3 +1,5 @@
+// pages/index/index.js  身份确认 appId获取
+
 // 引入wechat.js
 let wechat = require('../../utils/wechat.js');
 

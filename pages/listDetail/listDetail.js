@@ -1,4 +1,5 @@
-// pages/listDetail/listDetail.js
+// pages/listDetail/listDetail.js 首页 列表详情
+
 Page({
 
   /**

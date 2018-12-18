@@ -1,4 +1,5 @@
-// map.js
+// pages/map/map.js  地理位置
+
 // markers做成主动设置坐标做标记  地图会定位到当前用户所在位置 增加一键缩放查看两个坐标
 Page({
   data: {

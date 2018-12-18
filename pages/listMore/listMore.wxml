@@ -1,14 +1,5 @@
-<!--home.wxml-->
+<!--listMore.wxml-->
 <view class="home-container">
-  <view class="container">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image" width="355" height="150" />
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
   <view class="border-top"></view>
   <div class="weui-panel weui-panel_access">
     <div class="weui-panel__bd">
@@ -29,8 +20,8 @@
     </div>
     <div class="weui-panel__ft">
       <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
-        <div class="weui-cell__bd" bindtap="bindListMoreTap">查看更多</div>
-        <span class="weui-cell__ft"></span>
+        <!-- <div class="weui-cell__bd" bindtap="bindListMoreTap">查看更多</div> -->
+        <!-- <span class="weui-cell__ft"></span> -->
       </a>
     </div>
   </div>
