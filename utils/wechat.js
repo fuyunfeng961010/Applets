@@ -52,6 +52,7 @@ class Wechat {
 
     /**
      * 调用login 获取临时登录 code 
+     * @return {Promise}
      */
     static getCryptoData() {
         let js_code = '';
