@@ -4,10 +4,16 @@
     <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button> -->
     <button class="btn-getUserInfo" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
       开始体验 </button>
+    
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
+
+    <!-- <view class="share">
+      <button data-name="shareBtn" open-type="share" class="share-btn">转发好友</button>
+    </view> -->
+    
   </view>
   <!-- <view class="usermotto">
     <text class="user-motto">{{motto}}</text>

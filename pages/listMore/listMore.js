@@ -23,14 +23,14 @@ Page({
 				title: "标题三",
 				content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
 				imgUrl: "http://img3.imgtn.bdimg.com/it/u=360071471,385830226&fm=26&gp=0.jpg",
-      },
-      {
+			},
+			{
 				id: 4,
 				title: "标题四",
 				content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
 				imgUrl: "http://img3.imgtn.bdimg.com/it/u=360071471,385830226&fm=26&gp=0.jpg",
-      },
-      {
+			},
+			{
 				id: 5,
 				title: "标题五",
 				content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
@@ -38,7 +38,16 @@ Page({
 			}
 		],
 	},
+	// 分享设置
+	onShareAppMessage: function (res) {
+		return {
+			title: '我是身份授权页',
+			path: '/pages/listDetail/listDetail',
+			success: function (res) {
 
+			}
+		}
+	},
 	onLoad() {
 		console.log(app.globalData.userInfo)
 	},

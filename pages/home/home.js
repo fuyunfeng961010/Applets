@@ -3,6 +3,9 @@
 //获取App 应用实例
 const app = getApp()
 
+// 定义wechat.js
+const wechat = app.globalData.wechat;
+
 Page({
 	data: {
 		imgUrls: [
@@ -36,8 +39,19 @@ Page({
 		],
 	},
 
+	// 分享设置
+	onShareAppMessage: function (res) {
+		return {
+			title: '我是身份授权页',
+			path: '/pages/index/index',
+			success: function (res) {
+
+			}
+		}
+	},
+
 	onLoad() {
-		console.log(app.globalData.userInfo)
+		// console.log(app.globalData.userInfo)
 	},
 
 	// 单个列表被点击

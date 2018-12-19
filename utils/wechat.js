@@ -25,6 +25,15 @@ class Wechat {
     };
 
     /**
+     * 用户是否授权
+     * @return {Promise} 
+     */
+    static getSetting() {
+        return new Promise((resolve, reject) => wx.getSetting({ success: resolve, fail: reject }));
+    };
+    
+
+    /**
      * 发起网络请求
      * @param {string} url  
      * @param {object} params 
@@ -36,7 +45,10 @@ class Wechat {
                 url: domain + url,
                 data: Object.assign({}, params),
                 method: method,
-                header: { 'Content-Type': type },
+                header: { 
+                    'Content-Type': type ,
+                    'cookie': 'sessionId'
+                },
                 success: resolve,
                 fail: reject
             }
@@ -44,7 +56,7 @@ class Wechat {
         })
             .then( data => {
                 if(data.data.code && data.data.code != 2000) {
-                   return this.errDialog(data.data.message) 
+                   return this.wxDialog('error', data.data.message) 
                 }
                 return Promise.resolve(data);
             })

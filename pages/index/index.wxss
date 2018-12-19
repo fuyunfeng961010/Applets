@@ -30,3 +30,12 @@ page {
 .usermotto {
   margin-top: 200px;
 }
+
+.share {
+  margin-top: 200px;
+}
+.share-btn {
+  /* background: url('http://img3.imgtn.bdimg.com/it/u=360071471,385830226&fm=26&gp=0.jpg'); */
+  /* background-size: 100% 100%; */
+  /* color: white; */
+}

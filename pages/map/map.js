@@ -51,6 +51,18 @@ Page({
     //   clickable: true
     // }]
   },
+
+   // 分享设置
+	onShareAppMessage: function (res) {
+		return {
+			title: '我是身份授权页',
+			path: '/pages/listDetail/listDetail',
+			success: function (res) {
+
+			}
+		}
+  },
+  
   onLoad: function () {
     var that = this;
     // 获取并定位到当前用户坐标
