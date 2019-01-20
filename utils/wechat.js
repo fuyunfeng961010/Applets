@@ -4,7 +4,7 @@
  */
 
 //请求域名前缀 
-let domain = 'http://172.16.12.145:9090';
+let domain = 'https://Applets-admin.fuyunfeng.top';
 // let domain = 'https://applets-admin.fuyunfeng.top';
 
 class Wechat {

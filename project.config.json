@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.4.0",
 	"appid": "wx38e9f9835b60acec",
-	"projectname": "Applets",
+	"projectname": "applets",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
