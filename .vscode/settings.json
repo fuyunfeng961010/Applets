@@ -1,2 +1,10 @@
 {
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "tslint.json": "jsonc",
+    "*.html": "html",
+    "*.wxml": "html"
+  }
 }

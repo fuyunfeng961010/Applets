@@ -3,7 +3,9 @@
   <view class="userinfo">
     <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button> -->
     <button class="btn-getUserInfo" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-      开始体验 </button>
+      登录访问 </button>
+
+    <button class="btn-experience" bindtap="bindViewTap" wx:if="{{!hasUserInfo && canIUse}}">体验访问</button>
     
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>

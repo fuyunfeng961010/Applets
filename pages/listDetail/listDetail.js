@@ -30,14 +30,14 @@ Page({
 	 */
 	onLoad: function (options) {
 		// 当前页面设置为分享首页 && 用户未登录时跳转至首页 传当前页面path路由参数
-		wechat.getSetting()
-			.then(res => {
-				if (!res.authSetting['scope.userInfo']) {
-					wx.navigateTo({
-						url: '../index/index?path=/pages/listDetail/listDetail'
-					})
-				}
-			})
+		// wechat.getSetting()
+		// 	.then(res => {
+		// 		if (!res.authSetting['scope.userInfo']) {
+		// 			wx.navigateTo({
+		// 				url: '../index/index?path=/pages/listDetail/listDetail'
+		// 			})
+		// 		}
+		// 	})
 	},
 
 	/**
