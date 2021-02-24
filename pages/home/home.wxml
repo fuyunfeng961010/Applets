@@ -2,7 +2,7 @@
 <view class="home-container">
   <view class="container">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <block wx:for="{{imgUrls}}" wx:key="{{item.id}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" width="355" height="150" />
         </swiper-item>
@@ -12,8 +12,8 @@
   <view class="border-top"></view>
   <div class="weui-panel weui-panel_access">
     <div class="weui-panel__bd">
-      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" wx:for="{{dataList}}" wx:key="{{index}}">
-        <div class="weui-media-box__hd">
+      <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" wx:for="{{dataList}}" wx:key="{{item.id}}">
+        <div class="weui-media-box__hd item-left">
           <image class="weui-media-box__thumb" 
             src="{{item.imgUrl}}"
             alt=""
@@ -21,7 +21,7 @@
             bindtap="bindListDetaileTap">
           </image>
         </div>
-        <div class="weui-media-box__bd">
+        <div class="weui-media-box__bd item-right">
           <h4 class="weui-media-box__title" id="{{item.id}}" bindtap="bindListDetaileTap">{{item.title}}</h4>
           <p class="weui-media-box__desc" id="{{item.id}}" bindtap="bindListDetaileTap">{{item.content}}</p>
         </div>

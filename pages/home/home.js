@@ -8,35 +8,12 @@ const wechat = app.globalData.wechat;
 
 Page({
 	data: {
-		imgUrls: [
-			'http://img3.imgtn.bdimg.com/it/u=337460218,1386144557&fm=26&gp=0.jpg',
-			'https://portal.fuyunfeng.top/files/images/hexo-default-bg.jpg',
-			'http://img3.imgtn.bdimg.com/it/u=360071471,385830226&fm=26&gp=0.jpg'
-		],
+		imgUrls: [...app.globalData.data].slice(0, 3).map(item => item.imgUrl),
 		indicatorDots: true,
 		autoplay: true,
 		interval: 2000,
 		duration: 1000,
-		dataList: [
-			{
-				id: 1,
-				title: "标题一",
-				content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-				imgUrl: "http://img3.imgtn.bdimg.com/it/u=337460218,1386144557&fm=26&gp=0.jpg",
-			},
-			{
-				id: 2,
-				title: "标题二",
-				content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-				imgUrl: "https://portal.fuyunfeng.top/files/images/hexo-default-bg.jpg",
-			},
-			{
-				id: 3,
-				title: "标题三",
-				content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-				imgUrl: "http://img3.imgtn.bdimg.com/it/u=360071471,385830226&fm=26&gp=0.jpg",
-			}
-		],
+		dataList: [...app.globalData.data].slice(0, 3),
 	},
 
 	// 分享设置
@@ -51,7 +28,7 @@ Page({
 	},
 
 	onLoad() {
-		// console.log(app.globalData.userInfo)
+		console.log(app.globalData)
 	},
 
 	// 单个列表被点击

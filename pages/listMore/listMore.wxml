@@ -5,14 +5,14 @@
     <div class="weui-panel__bd">
       <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" wx:for="{{dataList}}" wx:key="{{index}}">
         <div class="weui-media-box__hd">
-          <image class="weui-media-box__thumb" 
+          <image class="weui-media-box__thumb item-left" 
             src="{{item.imgUrl}}"
             alt=""
             id="{{item.id}}"
             bindtap="bindListDetaileTap">
           </image>
         </div>
-        <div class="weui-media-box__bd">
+        <div class="weui-media-box__bd item-right">
           <h4 class="weui-media-box__title" id="{{item.id}}" bindtap="bindListDetaileTap">{{item.title}}</h4>
           <p class="weui-media-box__desc" id="{{item.id}}" bindtap="bindListDetaileTap">{{item.content}}</p>
         </div>

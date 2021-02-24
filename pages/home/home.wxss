@@ -25,9 +25,16 @@ page {
 
 
 .weui-media-box__hd {
-    margin-right:25rpx;
-    width:400rpx;
     height:170rpx;
     line-height:200rpx;
     text-align:center;
+}
+
+.item-left {
+  width: 30%;
+}
+
+.item-right {
+  width: 65%;
+  margin-left: 5%;
 }

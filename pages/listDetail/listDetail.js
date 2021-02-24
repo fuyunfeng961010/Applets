@@ -11,7 +11,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+    detailInfo: {}
 	},
 
 	// 分享设置
@@ -29,6 +29,12 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+    console.log('options', options)
+    this.setData({
+      detailInfo: [...app.globalData.data].find(item => item.id === Number(options.id)) || {}
+    }, () => {
+      console.log('this.data.detailInfo', this.data.detailInfo)
+    })
 		// 当前页面设置为分享首页 && 用户未登录时跳转至首页 传当前页面path路由参数
 		// wechat.getSetting()
 		// 	.then(res => {
