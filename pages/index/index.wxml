@@ -1,5 +1,5 @@
 <wxs src="../../utils/wxs/helper.wxs" module="helper" />
-<view class="index-container">
+<view class="index-container" bindtap="toHome">
   <view wx:for="{{todayHisInfo}}" wx:key="index">
     <view class="top layout-flex-center">
       <view class="title">

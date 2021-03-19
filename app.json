@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/photoAlbum/photoAlbum",
+    "pages/me/me",
     "pages/home/home",
     "pages/listMore/listMore",
     "pages/listDetail/listDetail",
@@ -16,16 +18,16 @@
     "selectedColor": "#000",
     "list": [
       {
-        "pagePath": "pages/home/home",
-        "iconPath": "static/images/hourse-default.png",
-        "selectedIconPath": "static/images/hourse-selected.png",
-        "text": "首页"
+        "pagePath": "pages/photoAlbum/photoAlbum",
+        "iconPath": "static/img/photoAlbum.png",
+        "selectedIconPath": "static/img/photoAlbum_sel.png",
+        "text": "影集管理"
       },
       {
-        "pagePath": "pages/map/map",
-        "iconPath": "static/images/position-default.png",
-        "selectedIconPath": "static/images/map-other.png",
-        "text": "位置"
+        "pagePath": "pages/me/me",
+        "iconPath": "static/img/me.png",
+        "selectedIconPath": "static/img/me_sel.png",
+        "text": "我的"
       }
     ]
   },

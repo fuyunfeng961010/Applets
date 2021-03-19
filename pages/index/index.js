@@ -2,8 +2,6 @@ const app = getApp()
 
 const { getTodayHistory } = require('../../utils/aliy')
 
-const { yearConver } = app.globalData.helper
-
 const wechat = app.globalData.wechat;
 
 // 分享其他路由页面 用户未授权时跳转首页 并携带路由参数  授权后直接跳转到分享的页面 默认home页面
@@ -151,6 +149,12 @@ Page({
       })
   },
 
+  toHome() {
+    console.log('toHome')
+    wx.switchTab({
+      url: '/pages/photoAlbum/photoAlbum'
+    })
+  },
 	/**
 	 * 用户点击开始体验 确认授权后
 	 * 通过wx.login 接口 获取临时code码  通过 getUserInfo 获取用户加密信息
