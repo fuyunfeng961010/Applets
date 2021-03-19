@@ -1,23 +1,17 @@
-<!--index.wxml-->
-<view class="index-container container">
-  <view class="userinfo">
-    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button> -->
-    <button class="btn-getUserInfo" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-      登录访问 </button>
-
-    <button class="btn-experience" bindtap="bindViewTap" wx:if="{{!hasUserInfo && canIUse}}">体验访问</button>
-    
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-
-    <!-- <view class="share">
-      <button data-name="shareBtn" open-type="share" class="share-btn">转发好友</button>
-    </view> -->
-    
+<wxs src="../../utils/wxs/helper.wxs" module="helper" />
+<view class="index-container">
+  <view wx:for="{{todayHisInfo}}" wx:key="index">
+    <view class="top layout-flex-center">
+      <view class="title">
+        <view class="date font-size-52">{{helper.yearConver(item.year)}}年</view>
+        <view class="line"></view>
+        <view class="text-align-center font-size-30 sub-title">
+          {{item.title}}
+        </view>
+      </view>
+    </view>
+    <view class="rich-text">
+      <rich-text nodes="{{item.content}}"></rich-text>
+    </view>
   </view>
-  <!-- <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view> -->
 </view>

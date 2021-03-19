@@ -1,0 +1,23 @@
+// 年份转换为中文显示
+var yearConver = function (year) {
+  if (!year) return null
+  var dict = {
+    '0': '零',
+    '1': '一',
+    '2': '二',
+    '3': '三',
+    '4': '四',
+    '5': '五',
+    '6': '六',
+    '7': '七',
+    '8': '八',
+    '9': '九'
+  }
+  return year.toString().split('').map(function (item) {
+    return dict[item]
+  }).join('')
+}
+
+module.exports = {
+  yearConver: yearConver
+}

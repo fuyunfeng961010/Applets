@@ -1,50 +1,35 @@
-/**index.wxss**/
 page {
-  height:100%;
+  width: 100%;
+  height: 100%;
 }
-
-/* 背景图片设置  不支持本地静态图片资源  wxml中行内样式可以  但手机查看无效  base64或网络资源最佳 */
-.index-container {
-  background: url('https://portal.fuyunfeng.top/files/images/applets-home-bg.png');
-  background-size: 100% 100%;
+page .index-container {
+  width: 100%;
+  height: 100%;
 }
-
-.btn-getUserInfo {
-  background: #1989fa;
-  color: white;
+page .index-container .top {
+  width: 100%;
+  height: 20%;
 }
-
-.btn-experience {
-  margin-top: 25px;
+page .index-container .top .title {
+  width: 90%;
+  text-align: center;
 }
-
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+page .index-container .top .title .date {
+  color: #373737;
+  letter-spacing: 8rpx;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+page .index-container .top .title .line {
+  width: 130rpx;
+  border-top: 4rpx solid #E7E7E7;
+  margin: 24rpx auto;
 }
-
-.userinfo-nickname {
-  /* color: #aaa; */
-  color: white;
+page .index-container .top .title .sub-title {
+  color: #454545;
 }
-
-.usermotto {
-  margin-top: 200px;
+page .index-container .rich-text {
+  padding: 100rpx 3%;
+  font-size: 32rpx;
 }
-
-.share {
-  margin-top: 200px;
-}
-.share-btn {
-  /* background: url('http://img3.imgtn.bdimg.com/it/u=360071471,385830226&fm=26&gp=0.jpg'); */
-  /* background-size: 100% 100%; */
-  /* color: white; */
+page .index-container .rich-text img {
+  width: 100%;
 }
