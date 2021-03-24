@@ -1,0 +1,44 @@
+{
+  "id": "2432310",
+  "name": "applets-photoAlbum",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "相册影集",
+  "glyphs": [
+    {
+      "icon_id": "16723277",
+      "name": "Add",
+      "font_class": "add",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "3751664",
+      "name": "标签栏- 我的",
+      "font_class": "wode",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "20502967",
+      "name": "标签栏- 我的",
+      "font_class": "wode-sel",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "13040947",
+      "name": "影集",
+      "font_class": "yingji",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "20502869",
+      "name": "影集",
+      "font_class": "yingji-sel",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    }
+  ]
+}

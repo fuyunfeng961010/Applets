@@ -1,0 +1,20 @@
+<view class="new-album-container">
+  <view class="new-album-form">
+    <view class="album-name border1rpx-bottom">
+      <input type="text" class="font-size-52 " value="" placeholder='输入影集名'></input>
+    </view>
+    <view class="photo-album-list">
+      <view class="album-item" wx:for="{{list}}" wx:key="index">
+        <view class="album-box">
+          <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
+        </view>
+      </view>
+      <view class="album-item">
+        <view class="album-box album-box-add">
+          <text class="iconfont iconadd album-add-icon"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="submit-btn layout-flex-center">确认提交</view>
+</view>

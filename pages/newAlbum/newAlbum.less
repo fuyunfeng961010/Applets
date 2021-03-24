@@ -1,0 +1,96 @@
+page {
+  width: 100%;
+  height: 100%;
+  .new-album-container {
+    width: 100%;
+    height: 100%;
+
+    .new-album-form {
+      padding: 30rpx 4% 30rpx 4%;
+      height: 80%;
+
+      .album-name {
+        padding-bottom: 20rpx;
+        position: relative;
+
+        input {
+          height: 2rem;
+        }
+      }
+
+      .photo-album-list {
+        height: calc(~"100% - 80rpx");
+        margin-top: 20rpx;
+        overflow: scroll;
+        display: flex;
+        justify-content: flex-left;
+        flex-wrap: wrap;
+  
+        .album-item {
+          width: 33%;
+          margin-right: .5%;
+          margin-top: 30rpx;
+          text-align: center;
+
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+
+          .album-box-add {
+            background: #EBF2FA;
+          }
+          .album-box {
+            display: inline-block;
+            width: 100%;
+            position: relative;
+            vertical-align: middle;
+  
+            image {
+              position: absolute;
+              left: 0%;
+              top: 0%;
+              width: 100%;
+              height: 100%;
+            }
+  
+            .album-add-icon {
+              font-size: 75rpx;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+  
+            .album-add-icon:before {
+              color: #D0D4DF;
+            }
+          }
+  
+          .album-box:before {
+            content: "";
+            display: inline-block;
+            padding-bottom: 100%;
+            width: .1px;
+            vertical-align: middle;
+          }
+  
+          .album-title {
+            // font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .submit-btn {
+      width: 92%;
+      height: 80rpx;
+      border-radius: 40rpx;
+      background: #1AAD19;
+      position: absolute;
+      left: 50%;
+      bottom: 4%;
+      transform: translateX(-50%);
+      color: white;
+    }
+  }
+}

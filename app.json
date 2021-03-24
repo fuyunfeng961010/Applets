@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/photoAlbum/photoAlbum",
+    "pages/index/index",
+    "pages/newAlbum/newAlbum",
     "pages/me/me",
+
     "pages/home/home",
     "pages/listMore/listMore",
     "pages/listDetail/listDetail",

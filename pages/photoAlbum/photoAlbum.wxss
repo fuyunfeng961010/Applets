@@ -1,1 +1,52 @@
-/* pages/photoAlbum/photoAlbum.wxss */
+page {
+  width: 100%;
+  height: 100%;
+}
+page .photo-album-container {
+  width: 100%;
+  height: 100%;
+}
+page .photo-album-container .photo-album-list {
+  padding: 0 6% 30rpx 6%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+page .photo-album-container .photo-album-list .album-item {
+  width: 48%;
+  margin-top: 30rpx;
+  text-align: center;
+}
+page .photo-album-container .photo-album-list .album-item .album-box-add {
+  background: #EFEFEF;
+}
+page .photo-album-container .photo-album-list .album-item .album-box {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+page .photo-album-container .photo-album-list .album-item .album-box image {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+}
+page .photo-album-container .photo-album-list .album-item .album-box .album-add-icon {
+  font-size: 95rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+page .photo-album-container .photo-album-list .album-item .album-box .album-add-icon:before {
+  color: #909090;
+}
+page .photo-album-container .photo-album-list .album-item .album-box:before {
+  content: "";
+  display: inline-block;
+  padding-bottom: 100%;
+  width: .1px;
+  vertical-align: middle;
+}

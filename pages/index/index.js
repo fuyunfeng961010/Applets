@@ -140,7 +140,7 @@ Page({
           console.log('res', res.data.data)
           const hisList = res.data.data
           hisList.forEach(item => {
-            item.content = item.content.replace('<img', '<img style="max-width:100%; height:auto;"')
+            item.content = item.content.replace(/<img/g, '<img style="max-width:100%; height:auto;"')
           })
           this.setData({
             todayHisInfo: hisList

@@ -1,17 +1,12 @@
-// pages/photoAlbum/photoAlbum.js
+// pages/newAlbum/newAlbum.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg'
-  },
-
-  toNewAlbum() {
-    wx.navigateTo({
-			url: '../newAlbum/newAlbum'
-		})
+    imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg',
+    list: 1
   },
 
   /**

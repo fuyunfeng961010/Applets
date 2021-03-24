@@ -1,9 +1,22 @@
 /* common* */
+.border1rpx-bottom::after {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid #ccc;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
 .text-align-center {
   text-align: center;
 }
 
 /* color-* */
+
 .color-bg {
   color: #F7F8FA;
 }
@@ -20,9 +33,12 @@
   color: #98CAE9;
 }
 
-
+.color-ccc {
+  color: #ccc
+}
 
 /* font-size-* */
+
 .font-size-30 {
   font-size: 30rpx;
 }
@@ -63,9 +79,8 @@
   font-size: 72rpx;
 }
 
-
-
 /* offset-* */
+
 .offset-pr-mt-5 {
   margin-top: 5%;
 }
@@ -85,12 +100,10 @@
 .offset-pr-ml-5 {
   margin-left: 5%;
 }
-  
 
 .offset-rpx-ml-5 {
   margin-left: 11rpx;
 }
-  
 
 .offset-pr-ml-10 {
   margin-left: 10%;
@@ -99,7 +112,6 @@
 .offset-rpx-ml-10 {
   margin-left: 23rpx;
 }
-
 
 .offset-pr-mr-10 {
   margin-right: 10%;
@@ -110,6 +122,7 @@
 }
 
 /* layout-* */
+
 .layout-flex-between {
   display: flex;
   justify-content: space-between;
@@ -127,4 +140,3 @@
   justify-content: space-around;
   align-items: center;
 }
-  
