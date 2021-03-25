@@ -1,18 +1,26 @@
-// pages/newAlbum/newAlbum.js
+// pages/albumDetail/albumDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isLove: false,
+    isEdit: false,
     imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg',
-    list: 1
+    list: 5
   },
 
-  toAlbumDetail() {
-    wx.navigateTo({
-			url: '../albumDetail/albumDetail'
-		})
+  loveSwitch() {
+    this.setData({
+      isLove: !this.data.isLove
+    })
+  },
+
+  editSwitch() {
+    this.setData({
+      isEdit: !this.data.isEdit
+    })
   },
 
   /**

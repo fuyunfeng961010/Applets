@@ -6,6 +6,69 @@
   "description": "相册影集",
   "glyphs": [
     {
+      "icon_id": "1029205",
+      "name": "下载",
+      "font_class": "download",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "18367976",
+      "name": "删 除 (1)",
+      "font_class": "delete",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "5766793",
+      "name": "管理1",
+      "font_class": "manage",
+      "unicode": "e6a4",
+      "unicode_decimal": 59044
+    },
+    {
+      "icon_id": "5766794",
+      "name": "管理2",
+      "font_class": "manage2",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "7939956",
+      "name": "分享",
+      "font_class": "share",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "9512544",
+      "name": "编辑",
+      "font_class": "edit",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "3050492",
+      "name": "爱心",
+      "font_class": "love-sel",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "3050493",
+      "name": "爱心",
+      "font_class": "love",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "1901645",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "16723277",
       "name": "Add",
       "font_class": "add",

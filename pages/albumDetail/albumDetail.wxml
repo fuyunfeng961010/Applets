@@ -1,0 +1,67 @@
+<view class="album-detail-container">
+  <view class="album-detail-box">
+    <view class="title-info">
+      <view class="title font-size-52">周末日常拍摄</view>
+      <view class="info offset-rpx-mt-10 layout-flex-between">
+        <view>
+          <text>浏览</text><text class="offset-rpx-ml-5">320</text>
+          <text class="offset-rpx-ml-5">评论</text><text class="offset-rpx-ml-5">12</text>
+          <text class="offset-rpx-ml-5">赞</text><text class="offset-rpx-ml-5">99</text>
+        </view>
+        <view class="right-icon layout-flex-between">
+          <text class="iconfont iconpinglun"></text>
+          <text class="iconfont iconlove-sel love-sel-icon" wx:if="{{isLove}}" bindtap="loveSwitch"></text>
+          <text class="iconfont iconlove" wx:else bindtap="loveSwitch"></text>
+        </view>
+      </view>
+    </view>
+    <view class="date-photo-list">
+      <block wx:for="{{3}}" wx:key="index">
+        <view class="date">08月10日</view>
+        <view class="photo-album-list">
+          <view class="album-item" wx:for="{{list}}" wx:key="index">
+            <view class="album-box">
+              <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="bottom-opt" wx:if="{{isEdit}}">
+      <view class="left-manage">
+        <view class="cancel" bindtap="editSwitch">
+          <text>取消（0）</text>
+        </view>
+      </view>
+      <view class="right-action">
+        <view class="layout-flex-between down-del">
+          <view>
+            <text class="iconfont icondownload"></text>
+            <view class="offset-rpx-mt-3 desc">下载</view>
+          </view>
+          <view>
+            <text class="iconfont icondelete"></text>
+            <view class="offset-rpx-mt-3 desc">删除</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom-opt" wx:else>
+      <view class="left-manage">
+        <view class="flex-1" bindtap="editSwitch">
+          <text class="iconfont iconmanage"></text>
+          <view class="offset-rpx-mt-3 desc">批量管理</view>
+        </view>
+        <view class="flex-1">
+          <text class="iconfont iconshare"></text>
+          <view class="offset-rpx-mt-3 desc">分享影集</view>
+        </view>
+        <view class="flex-1"></view>
+        <view class="flex-1"></view>
+      </view>
+      <view class="right-action">
+        <view class="upload layout-flex-center">上传</view>
+      </view>
+    </view>
+  </view>
+</view>
