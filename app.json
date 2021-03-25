@@ -1,12 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/albumDetail/albumDetail",
-    
+    "pages/index/index",
+    "pages/me/me",
     "pages/newAlbum/newAlbum",
     "pages/photoAlbum/photoAlbum",
-    "pages/me/me",
-
     "pages/home/home",
     "pages/listMore/listMore",
     "pages/listDetail/listDetail",

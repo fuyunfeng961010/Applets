@@ -6,6 +6,20 @@
   "description": "相册影集",
   "glyphs": [
     {
+      "icon_id": "18447017",
+      "name": "对",
+      "font_class": "hook",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "792427",
+      "name": "duihao2-b",
+      "font_class": "duihao2b",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    },
+    {
       "icon_id": "1029205",
       "name": "下载",
       "font_class": "download",

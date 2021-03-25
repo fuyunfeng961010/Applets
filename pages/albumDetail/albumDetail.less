@@ -13,12 +13,20 @@ page {
       overflow: scroll;
       
       .title-info {
-        height: 13%;
+        min-height: 13%;
         padding: 0 6%;
   
         .title {
           // font-weight: bold;
           letter-spacing: 5rpx;
+
+          .iconedit::before {
+            font-size: 52rpx;
+          }
+
+          input {
+            height: 2rem;
+          }
         }
   
         .info {
@@ -41,6 +49,11 @@ page {
         // overflow: scroll;
         .date {
           padding: 10rpx 6%;
+
+          .all-sel {
+            color: #3A56CF;
+            font-size: 32rpx;
+          }
         }
   
         .photo-album-list {
@@ -69,10 +82,31 @@ page {
     
               image {
                 position: absolute;
-                left: 0%;
-                top: 0%;
+                left: 0;
+                top: 0;
                 width: 100%;
                 height: 100%;
+              }
+
+              .circle {
+                width: 40rpx;
+                height: 40rpx;
+                background: #3B342C;
+                border-radius: 40rpx;
+                border: 5rpx solid #BAC3CB;
+                position: absolute;
+                top: 10rpx;
+                right: 10rpx;
+              }
+
+              .sel-circle {
+                background: #2E5EF2;
+                border: none;
+
+                .iconhook::before {
+                  font-size: 75rpx;
+                  color: white;
+                }
               }
     
               .album-add-icon {

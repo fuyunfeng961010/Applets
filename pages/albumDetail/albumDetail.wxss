@@ -13,11 +13,17 @@ page .album-detail-container .album-detail-box {
   overflow: scroll;
 }
 page .album-detail-container .album-detail-box .title-info {
-  height: 13%;
+  min-height: 13%;
   padding: 0 6%;
 }
 page .album-detail-container .album-detail-box .title-info .title {
   letter-spacing: 5rpx;
+}
+page .album-detail-container .album-detail-box .title-info .title .iconedit::before {
+  font-size: 52rpx;
+}
+page .album-detail-container .album-detail-box .title-info .title input {
+  height: 2rem;
 }
 page .album-detail-container .album-detail-box .title-info .info {
   font-size: 30rpx;
@@ -34,6 +40,10 @@ page .album-detail-container .album-detail-box .date-photo-list {
 }
 page .album-detail-container .album-detail-box .date-photo-list .date {
   padding: 10rpx 6%;
+}
+page .album-detail-container .album-detail-box .date-photo-list .date .all-sel {
+  color: #3A56CF;
+  font-size: 32rpx;
 }
 page .album-detail-container .album-detail-box .date-photo-list .photo-album-list {
   display: flex;
@@ -60,10 +70,28 @@ page .album-detail-container .album-detail-box .date-photo-list .photo-album-lis
 }
 page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box image {
   position: absolute;
-  left: 0%;
-  top: 0%;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+}
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .circle {
+  width: 40rpx;
+  height: 40rpx;
+  background: #3B342C;
+  border-radius: 40rpx;
+  border: 5rpx solid #BAC3CB;
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+}
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .sel-circle {
+  background: #2E5EF2;
+  border: none;
+}
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .sel-circle .iconhook::before {
+  font-size: 75rpx;
+  color: white;
 }
 page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .album-add-icon {
   font-size: 75rpx;

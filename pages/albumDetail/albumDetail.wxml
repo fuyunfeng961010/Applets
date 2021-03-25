@@ -1,7 +1,14 @@
 <view class="album-detail-container">
   <view class="album-detail-box">
     <view class="title-info">
-      <view class="title font-size-52">周末日常拍摄</view>
+      <view class="title font-size-52">
+        <input type="text" class="font-size-52" value="" placeholder='输入影集名' focus="autoFocus" value="{{title}}" bindinput="titleInput"  bindblur="titleBlur" wx:if="{{titleEdit}}"></input>
+        <block wx:else>
+          <text>{{title}}</text>
+          <text class="iconfont iconedit offset-rpx-ml-5" bindtap="titEditSwitch"></text>
+        </block>
+        
+      </view>
       <view class="info offset-rpx-mt-10 layout-flex-between">
         <view>
           <text>浏览</text><text class="offset-rpx-ml-5">320</text>
@@ -17,11 +24,18 @@
     </view>
     <view class="date-photo-list">
       <block wx:for="{{3}}" wx:key="index">
-        <view class="date">08月10日</view>
+        <view class="date layout-flex-between">
+          <view>08月10日</view>
+          <view class="all-sel" wx:if="{{isEdit}}">全选</view>  
+        </view>
         <view class="photo-album-list">
           <view class="album-item" wx:for="{{list}}" wx:key="index">
             <view class="album-box">
               <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
+              <view class="circle sel-circle layout-flex-center" wx:if="{{index < 2}}">
+                <text class="iconfont iconhook"></text>
+              </view>
+              <view class="circle" wx:else></view>
             </view>
           </view>
         </view>
@@ -29,7 +43,7 @@
     </view>
     <view class="bottom-opt" wx:if="{{isEdit}}">
       <view class="left-manage">
-        <view class="cancel" bindtap="editSwitch">
+        <view class="cancel" bindtap="manageSwitch">
           <text>取消（0）</text>
         </view>
       </view>
@@ -48,7 +62,7 @@
     </view>
     <view class="bottom-opt" wx:else>
       <view class="left-manage">
-        <view class="flex-1" bindtap="editSwitch">
+        <view class="flex-1" bindtap="manageSwitch">
           <text class="iconfont iconmanage"></text>
           <view class="offset-rpx-mt-3 desc">批量管理</view>
         </view>

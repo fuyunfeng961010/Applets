@@ -7,8 +7,10 @@ Page({
   data: {
     isLove: false,
     isEdit: false,
+    titleEdit: false,
     imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg',
-    list: 5
+    list: 5,
+    title: '周末日常拍摄'
   },
 
   loveSwitch() {
@@ -17,9 +19,32 @@ Page({
     })
   },
 
-  editSwitch() {
+  manageSwitch() {
     this.setData({
       isEdit: !this.data.isEdit
+    })
+  },
+
+  titEditSwitch() {
+    this.setData({
+      titleEdit: !this.data.titleEdit
+    }, () => {
+      this.setData({
+        autoFocus: this.data.titleEdit
+      })
+      console.log(this.data.autoFocus)
+    })
+  },
+
+  titleBlur() {
+    this.setData({
+      titleEdit: false
+    })
+  },
+
+  titleInput: function (e) {
+    this.setData({
+      title: e.detail.value
     })
   },
 
