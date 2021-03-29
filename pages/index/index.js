@@ -1,6 +1,6 @@
 const app = getApp()
 
-const { getTodayHistory } = require('../../utils/aliy')
+const { getTodayHistory } = require('../../utils/api/aliy')
 
 const wechat = app.globalData.wechat;
 

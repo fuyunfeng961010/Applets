@@ -1,4 +1,4 @@
-const Wechat = require('./wechat')
+const Wechat = require('../wechat')
 const wechatApp = new Wechat()
 
 const getTodayHistory = params => {

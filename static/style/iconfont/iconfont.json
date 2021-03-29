@@ -6,6 +6,13 @@
   "description": "相册影集",
   "glyphs": [
     {
+      "icon_id": "7826085",
+      "name": "close",
+      "font_class": "del-x",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
       "icon_id": "18447017",
       "name": "对",
       "font_class": "hook",

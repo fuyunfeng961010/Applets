@@ -1,12 +1,10 @@
 /**
  * api请求
  */
-
-const domain = 'https://portal.fuyunfeng.top/api'
-// const domain = 'http://localhost:9098'
+const domain = require('../app').domain
 class Wechat {
   constructor(intOpt = {}) {
-    this.domain = intOpt.baseUrl ? intOpt.baseUrl : domain;
+    this.apiBaseUrl = intOpt.baseUrl ? intOpt.baseUrl : `${domain}/api`;
   }
 
   /**
@@ -15,7 +13,7 @@ class Wechat {
   request(option = {}) {
     return new Promise((resolve, reject) => {
       let opts = {
-        url: this.domain + option.url,
+        url: this.apiBaseUrl + option.url,
         data: Object.assign({}, option.params),
         method: option.method || 'GET',
         header: {

@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "新建影集"
+  "navigationBarTitleText": "新建影集",
+  "usingComponents": {
+    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
+    "mp-toptips": "weui-miniprogram/toptips/toptips"
+  }
 }

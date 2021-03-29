@@ -1,20 +1,22 @@
 <view class="new-album-container">
+  <mp-toptips msg="{{tipMsg}}" type="{{tipType}}" show="{{tipShow}}"></mp-toptips>
   <view class="new-album-form">
     <view class="album-name border1rpx-bottom">
-      <input type="text" class="font-size-52" value="" placeholder='输入影集名'></input>
+      <input type="text" class="font-size-52" model:value="{{title}}" placeholder='输入影集名'></input>
     </view>
     <view class="photo-album-list">
-      <view class="album-item" wx:for="{{list}}" wx:key="index">
+      <view class="album-item" wx:for="{{imageList}}" wx:key="index">
         <view class="album-box">
-          <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
+          <image src="{{item.path}}" alt="" mode="aspectFill"></image>
+          <text class="iconfont icondel-x" data-index="{{index}}" bindtap="delImage"></text>
         </view>
       </view>
-      <view class="album-item">
+      <view class="album-item" bindtap="chooseImage">
         <view class="album-box album-box-add">
           <text class="iconfont iconadd album-add-icon"></text>
         </view>
       </view>
     </view>
   </view>
-  <view class="submit-btn layout-flex-center" bindtap="toAlbumDetail">确认提交</view>
+  <view class="submit-btn layout-flex-center" bindtap="submitAlbum">确认提交</view>
 </view>

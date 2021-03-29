@@ -90,7 +90,7 @@ page .album-detail-container .album-detail-box .date-photo-list .photo-album-lis
   border: none;
 }
 page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .sel-circle .iconhook::before {
-  font-size: 75rpx;
+  font-size: 30rpx;
   color: white;
 }
 page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .album-add-icon {

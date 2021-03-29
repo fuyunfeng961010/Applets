@@ -1,14 +1,11 @@
 {
   "pages": [
-    "pages/albumDetail/albumDetail",
-    "pages/index/index",
-    "pages/me/me",
-    "pages/newAlbum/newAlbum",
     "pages/photoAlbum/photoAlbum",
-    "pages/home/home",
-    "pages/listMore/listMore",
-    "pages/listDetail/listDetail",
-    "pages/map/map"
+    "pages/index/index",
+    "pages/newAlbum/newAlbum",
+    "pages/albumDetail/albumDetail",
+    "pages/me/me"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,5 +35,9 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  }
 }
