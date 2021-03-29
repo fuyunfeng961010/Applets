@@ -1,4 +1,5 @@
-// pages/newAlbum/newAlbum.js
+const app = getApp()
+
 Page({
 
   /**
@@ -6,44 +7,14 @@ Page({
    */
   data: {
     imageList: [
-      {
-        path: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg'
-      }
+      // {
+      //   path: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg'
+      // }
     ],
     title: 'name',
     tipShow: false,
     tipMsg: '',
     tipType: ''
-  },
-
-  submitAlbum() {
-    if (!this.data.title) {
-      return this.showTips('影集名不能为空')
-    }
-    if (!this.data.imageList.length) {
-      return this.showTips('至少上传一张图片')
-    }
-
-    const uploadTask  = wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', //仅为示例，非真实的接口地址
-      filePath: tempFilePaths[0],
-      name: 'file',
-      formData: {
-        'title': this.data.title
-      },
-      success (res){
-        console.log('res', res)
-      }
-    })
-
-    uploadTask.onProgressUpdate((res) => {
-      console.log('上传进度', res.progress)
-      console.log('已经上传的数据长度', res.totalBytesSent)
-      console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
-    })
-    // wx.navigateTo({
-    //   url: '../albumDetail/albumDetail'
-    // })
   },
 
   showTips(tipMsg = '', tipType = 'error') {
@@ -52,6 +23,75 @@ Page({
       tipMsg,
       tipType
     })
+  },
+
+  createAlbum() {
+    wx.hideLoading()
+  },
+
+  async submitAlbum() {
+    if (!this.data.title) {
+      return this.showTips('影集名不能为空')
+    }
+    if (!this.data.imageList.length) {
+      return this.showTips('至少上传一张图片')
+    }
+    wx.showLoading({
+      title: '上传中',
+    })
+
+    let upFiles = []
+
+    // 循环上传
+    const imgs = this.data.imageList
+    for (let i = 0; i < imgs.length; i++) {
+      const upResult = await this.uploadImgs(imgs[i])
+      console.log('upResult', upResult)
+      if (upResult.result) {
+        upFiles = [...upFiles, ...upResult.file_list]
+        if (i === imgs.length - 1) {
+          console.log('upFiles', upFiles)
+          this.createAlbum()
+        }
+        continue
+      }
+      wx.hideLoading()
+      this.showTips(upResult.msg)
+      return
+    }
+  },
+
+  uploadImgs(file) {
+    return new Promise((resolve, reject) => {
+      const uploadTask = wx.uploadFile({
+        url: `${app.globalData.apiBaseUrl}/files/upload_file`,
+        filePath: file.path,
+        name: 'files',
+        formData: {
+          'title': this.data.title
+        },
+        success(res) {
+          const data = JSON.parse(res.data)
+          resolve(data)
+        },
+        fail(error) {
+          console.log('error', error)
+          resolve({
+            result: false,
+            msg: error.errMsg
+          })
+        }
+      })
+
+      // uploadTask.onProgressUpdate((res) => {
+      //   console.log('上传进度', res.progress)
+      //   console.log('已经上传的数据长度', res.totalBytesSent)
+      //   console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+      // })
+    })
+    // wx.navigateTo({
+    //   url: '../albumDetail/albumDetail'
+    // })
   },
 
   chooseImage() {

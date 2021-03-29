@@ -1,6 +1,9 @@
 const domain = 'https://portal.fuyunfeng.top'
-// const domain = 'http://localhost:9098'
+// const apiBaseUrl = `${domain}/api`
+const apiBaseUrl = 'http://192.168.1.117:9098'
+
 module.exports.domain = domain
+module.exports.apiBaseUrl = apiBaseUrl
 
 const Wechat = require('./utils/wechat');
 const helper = require('./utils/helper');
@@ -36,6 +39,7 @@ App({
   // 全局globalData变量
   globalData: {
     domain,
+    apiBaseUrl,
     helper,
     userInfo: null
   }

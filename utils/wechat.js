@@ -1,10 +1,10 @@
 /**
  * api请求
  */
-const domain = require('../app').domain
+const apiBaseUrl = require('../app').apiBaseUrl
 class Wechat {
   constructor(intOpt = {}) {
-    this.apiBaseUrl = intOpt.baseUrl ? intOpt.baseUrl : `${domain}/api`;
+    this.apiUrl = intOpt.apiUrl ? intOpt.apiUrl : apiBaseUrl;
   }
 
   /**
@@ -13,7 +13,7 @@ class Wechat {
   request(option = {}) {
     return new Promise((resolve, reject) => {
       let opts = {
-        url: this.apiBaseUrl + option.url,
+        url: this.apiUrl + option.path,
         data: Object.assign({}, option.params),
         method: option.method || 'GET',
         header: {

@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/newAlbum/newAlbum",
     "pages/photoAlbum/photoAlbum",
     "pages/index/index",
-    "pages/newAlbum/newAlbum",
     "pages/albumDetail/albumDetail",
     "pages/me/me"
     
