@@ -8,13 +8,21 @@ module.exports.apiBaseUrl = apiBaseUrl
 const Wechat = require('./utils/wechat');
 const helper = require('./utils/helper');
 
+const storageSync = ['userProfile', 'userInfo']
+
 // App实例
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
+    // 用户信息
+    storageSync.forEach(item => {
+      wx.getStorage({
+        key: item,
+        success: res => {
+          this.globalData[item] = JSON.parse(res.data)
+        }
+      })
+    })
+    
 
     // api 请求报错信息
     Wechat.prototype.wxDialog = (type = 'error', msg) => {
@@ -32,8 +40,6 @@ App({
 
     // 公共方法挂载
     this.globalData.helper = helper;
-
-
   },
 
   // 全局globalData变量
@@ -41,6 +47,7 @@ App({
     domain,
     apiBaseUrl,
     helper,
+    userProfile: null,
     userInfo: null
   }
 })

@@ -13,7 +13,7 @@ page .photo-album-container .photo-album-list {
   flex-wrap: wrap;
 }
 page .photo-album-container .photo-album-list .album-item {
-  width: 48%;
+  width: 47%;
   margin-top: 30rpx;
   text-align: center;
 }

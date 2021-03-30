@@ -5,7 +5,7 @@
         <text class="iconfont iconadd album-add-icon"></text>
       </view>
     </view>
-    <view class="album-item" wx:for="{{6}}" wx:key="index">
+    <view class="album-item" wx:for="{{0}}" wx:key="index">
       <view class="album-box">
         <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
       </view>
