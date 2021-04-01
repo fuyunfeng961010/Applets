@@ -1,4 +1,5 @@
 const app = getApp()
+const { createAlbum } = require('../../utils/api/photoAlbum')
 
 Page({
 
@@ -25,8 +26,19 @@ Page({
     })
   },
 
-  createAlbum() {
-    wx.hideLoading()
+  createAlbum(upFiles) {
+    const params = {
+      title: this.data.title,
+      photos: upFiles
+    }
+    createAlbum(params)
+    .then(res => {
+      wx.hideLoading()
+      console.log('res', res)
+      wx.switchTab({
+        url: '/pages/photoAlbum/photoAlbum'
+      })
+    })
   },
 
   async submitAlbum() {
@@ -51,7 +63,7 @@ Page({
         upFiles = [...upFiles, ...upResult.file_list]
         if (i === imgs.length - 1) {
           console.log('upFiles', upFiles)
-          this.createAlbum()
+          this.createAlbum(upFiles)
         }
         continue
       }

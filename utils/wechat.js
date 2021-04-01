@@ -1,20 +1,15 @@
-/**
- * api请求
- */
-const apiBaseUrl = require('../app').apiBaseUrl
 class Wechat {
   constructor(intOpt = {}) {
-    this.apiUrl = intOpt.apiUrl ? intOpt.apiUrl : apiBaseUrl;
+    this.app = getApp()
+    this.apiUrl = intOpt.apiUrl ? intOpt.apiUrl : this.app.globalData.apiBaseUrl
   }
 
-  /**
-   * wx 请求
-   */
   request(option = {}) {
     return new Promise((resolve, reject) => {
+      const openid = this.app.globalData.userInfo?.openid || null
       let opts = {
         url: this.apiUrl + option.path,
-        data: Object.assign({}, option.params),
+        data: Object.assign({openid}, option.params),
         method: option.method || 'GET',
         header: {
         },
@@ -31,48 +26,6 @@ class Wechat {
         }
         return Promise.resolve(data);
       })
-  };
-
-  /**
-   * 调用login 获取临时登录 code 
-   * @return {Promise}
-   */
-  getCryptoData() {
-    let js_code = '';
-    return this.login()
-      .then(data => {
-        js_code = data.code;
-        return this.getUserInfo();//调用getUserInfo 获取用户加密信息
-      })
-      .then(data => {
-
-        if (this.getUserInfoCallBack) {
-          this.getUserInfoCallBack(data.userInfo)
-        }
-
-        // 将用户临时登录code与加密信息参数发送到后台
-        let params = {
-          js_code,
-          encryptedData: data.encryptedData,
-          iv: data.iv,
-          rawData: data.rawData,
-          signature: data.signature
-        };
-        return Promise.resolve(params);
-      })
-      .catch(e => {
-        console.log(e);
-        return Promise.reject(e);
-      })
-  };
-
-  /**
-   * 发送临时登录code与加密参数 到后端获取openid 和解码信息
-   * @param {object} params 
-   */
-  getMyOpenid(params) {
-    let url = '/applets/getMyOpenid';
-    return this.request(url, params, "POST", "application/x-www-form-urlencoded");
   };
 }
 module.exports = Wechat;

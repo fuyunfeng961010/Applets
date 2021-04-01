@@ -5,7 +5,6 @@ const apiBaseUrl = 'http://192.168.1.117:9098'
 module.exports.domain = domain
 module.exports.apiBaseUrl = apiBaseUrl
 
-const Wechat = require('./utils/wechat');
 const helper = require('./utils/helper');
 
 const storageSync = ['userProfile', 'userInfo']
@@ -18,12 +17,23 @@ App({
       wx.getStorage({
         key: item,
         success: res => {
-          this.globalData[item] = JSON.parse(res.data)
+          const data = JSON.parse(res.data)
+          if (data['timestamp']) {
+            const weekTime = 1000 * 60 * 60 * 24 * 7
+            if (new Date().getTime() - data['timestamp'] > weekTime) {
+              try {
+                wx.clearStorageSync()
+              } catch(e) {
+              }
+              return
+            }
+          }
+          this.globalData[item] = data
         }
       })
     })
     
-
+    const Wechat = require('./utils/wechat');
     // api 请求报错信息
     Wechat.prototype.wxDialog = (type = 'error', msg) => {
       wx.showToast({

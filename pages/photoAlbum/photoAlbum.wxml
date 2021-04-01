@@ -5,12 +5,12 @@
         <text class="iconfont iconadd album-add-icon"></text>
       </view>
     </view>
-    <view class="album-item" wx:for="{{0}}" wx:key="index">
+    <view class="album-item" wx:for="{{albumList}}" wx:key="index">
       <view class="album-box">
-        <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
+        <image src="{{item.photos.length ? item.photos[0].path : ''}}" alt="" mode="aspectFill"></image>
       </view>
-      <view class="font-size-32 offset-rpx-mt-5 album-title">我的音乐影集</view>
-      <view class="font-size-30 offset-rpx-mt-5 color-ccc">24张</view>
+      <view class="font-size-32 offset-rpx-mt-5 album-title">{{item.title}}</view>
+      <view class="font-size-30 color-ccc">{{item.photos.length}}张</view>
     </view>
   </view>
 </view>

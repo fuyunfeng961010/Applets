@@ -8,14 +8,23 @@ const getWxInfo = params => {
   })
 }
 
-const createUser = params => {
+const createAlbum = params => {
   return wechatApp.request({
-    path: '/photoAlbum/create_user',
+    method: 'POST',
+    path: '/photoAlbum/create_album',
+    params
+  })
+}
+
+const getAlbum = params => {
+  return wechatApp.request({
+    path: '/photoAlbum/get_album',
     params
   })
 }
 
 module.exports = {
-  createUser,
-  getWxInfo
+  getWxInfo,
+  createAlbum,
+  getAlbum
 }

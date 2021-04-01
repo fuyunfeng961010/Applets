@@ -1,5 +1,5 @@
 const app = getApp()
-const { getWxInfo } = require('../../utils/api/photoAlbum')
+const { getWxInfo, getAlbum } = require('../../utils/api/photoAlbum')
 
 Page({
 
@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg'
+    imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg',
+    albumList: []
   },
 
   toNewAlbum() {
@@ -35,17 +36,37 @@ Page({
       success(res) {
         console.log('res', res)
         if (res.code) {
-          getWxInfo({code: res.code})
-          .then(res => {
-            if (res.data.result) {
-              wx.setStorage({
-                key: 'userInfo',
-                data: JSON.stringify(res.data.data)
-              })
-              app.globalData.userInfo = res.data.data
-            }
-          })
+          const params = {
+            code: res.code,
+            ...app.globalData.userProfile
+          }
+          console.log('params', params)
+          getWxInfo(params)
+            .then(res => {
+              if (res.data.result) {
+                wx.setStorage({
+                  key: 'userInfo',
+                  data: JSON.stringify({ ...res.data.data, timestamp: new Date().getTime() }),
+                })
+                app.globalData.userInfo = res.data.data
+                wx.navigateTo({
+                  url: '../newAlbum/newAlbum'
+                })
+              }
+            })
         }
+      }
+    })
+  },
+
+  getAlbumInfo() {
+    getAlbum()
+    .then(res => {
+      console.log('res', res)
+      if (res.data.result) {
+        this.setData({
+          albumList: res.data.data
+        })
       }
     })
   },
@@ -69,6 +90,9 @@ Page({
   onShow: function () {
     console.log('userProfile', app.globalData.userProfile)
     console.log('userInfo', app.globalData.userInfo)
+    if (app.globalData.userInfo?.openid) {
+      this.getAlbumInfo()
+    }
   },
 
   /**
