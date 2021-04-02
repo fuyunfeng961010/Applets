@@ -1,16 +1,16 @@
 <view class="photo-album-container">
   <view class="photo-album-list">
+    <view class="album-item" wx:for="{{albumList}}" wx:key="index" data-id="{{item.album_id}}" bindtap="toAlbumDetail">
+      <view class="album-box">
+        <image src="{{item.photos.length ? item.photos[0].path : defaultImg}}" alt="" mode="aspectFill"></image>
+      </view>
+      <view class="font-size-32 offset-rpx-mt-5 album-title">{{item.title}}</view>
+      <view class="font-size-30 color-ccc">{{item.photos.length}}张</view>
+    </view>
     <view class="album-item" bindtap="toNewAlbum">
       <view class="album-box album-box-add">
         <text class="iconfont iconadd album-add-icon"></text>
       </view>
-    </view>
-    <view class="album-item" wx:for="{{albumList}}" wx:key="index">
-      <view class="album-box">
-        <image src="{{item.photos.length ? item.photos[0].path : ''}}" alt="" mode="aspectFill"></image>
-      </view>
-      <view class="font-size-32 offset-rpx-mt-5 album-title">{{item.title}}</view>
-      <view class="font-size-30 color-ccc">{{item.photos.length}}张</view>
     </view>
   </view>
 </view>

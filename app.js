@@ -5,6 +5,8 @@ const apiBaseUrl = 'http://192.168.1.117:9098'
 module.exports.domain = domain
 module.exports.apiBaseUrl = apiBaseUrl
 
+const moment = require('./utils/lib/moment.min.js')
+const underscore = require('./utils/lib/underscore.min.js')
 const helper = require('./utils/helper');
 
 const storageSync = ['userProfile', 'userInfo']
@@ -49,14 +51,15 @@ App({
     }
 
     // 公共方法挂载
-    this.globalData.helper = helper;
+    this.globalData.helper = helper
+    this.globalData.moment = moment
+    this.globalData.underscore = underscore
   },
 
   // 全局globalData变量
   globalData: {
     domain,
     apiBaseUrl,
-    helper,
     userProfile: null,
     userInfo: null
   }

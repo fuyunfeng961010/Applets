@@ -1,5 +1,5 @@
 const app = getApp()
-const { getWxInfo, getAlbum } = require('../../utils/api/photoAlbum')
+const { getWxInfo, getAlbumList } = require('../../utils/api/photoAlbum')
 
 Page({
 
@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageUrl: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg',
+    defaultImg: 'https://portal.fuyunfeng.top/files/images/404.jpg',
     albumList: []
   },
 
@@ -28,6 +28,13 @@ Page({
         app.globalData.userProfile = res.userInfo
         this.getUserInfo()
       }
+    })
+  },
+
+  toAlbumDetail(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/albumDetail/albumDetail?id=${id}`
     })
   },
 
@@ -59,8 +66,8 @@ Page({
     })
   },
 
-  getAlbumInfo() {
-    getAlbum()
+  getAlbumList() {
+    getAlbumList()
     .then(res => {
       console.log('res', res)
       if (res.data.result) {
@@ -75,6 +82,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('userProfile', app.globalData.userProfile)
+    console.log('userInfo', app.globalData.userInfo)
+    if (app.globalData.userInfo?.openid) {
+      this.getAlbumList()
+    }
   },
 
   /**
@@ -88,11 +100,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('userProfile', app.globalData.userProfile)
-    console.log('userInfo', app.globalData.userInfo)
-    if (app.globalData.userInfo?.openid) {
-      this.getAlbumInfo()
-    }
+    
   },
 
   /**

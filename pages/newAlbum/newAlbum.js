@@ -39,6 +39,9 @@ Page({
         url: '/pages/photoAlbum/photoAlbum'
       })
     })
+    .catch(() => {
+      wx.hideLoading()
+    })
   },
 
   async submitAlbum() {

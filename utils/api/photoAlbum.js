@@ -16,9 +16,32 @@ const createAlbum = params => {
   })
 }
 
-const getAlbum = params => {
+const getAlbumList = params => {
   return wechatApp.request({
-    path: '/photoAlbum/get_album',
+    path: '/photoAlbum/get_album_list',
+    params
+  })
+}
+
+const getAlbumInfo = params => {
+  return wechatApp.request({
+    path: '/photoAlbum/get_album_info',
+    params
+  })
+}
+
+const delPhotos = params => {
+  return wechatApp.request({
+    method: 'POST',
+    path: '/photoAlbum/del_photos',
+    params
+  })
+}
+
+const updateAlbum = params => {
+  return wechatApp.request({
+    method: 'POST',
+    path: '/photoAlbum/update_album',
     params
   })
 }
@@ -26,5 +49,8 @@ const getAlbum = params => {
 module.exports = {
   getWxInfo,
   createAlbum,
-  getAlbum
+  getAlbumList,
+  getAlbumInfo,
+  updateAlbum,
+  delPhotos
 }

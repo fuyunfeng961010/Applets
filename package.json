@@ -1,0 +1,23 @@
+{
+  "name": "Applets",
+  "version": "1.0.0",
+  "description": "相册小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/author-fuyf/Applets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/author-fuyf/Applets/issues"
+  },
+  "homepage": "https://github.com/author-fuyf/Applets#readme",
+  "dependencies": {
+    "miniprogram-computed": "^4.0.3"
+  }
+}

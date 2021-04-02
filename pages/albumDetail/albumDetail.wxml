@@ -2,12 +2,13 @@
   <view class="album-detail-box">
     <view class="title-info">
       <view class="title font-size-52">
-        <input type="text" class="font-size-52" value="" placeholder='输入影集名' focus="autoFocus" value="{{title}}" bindinput="titleInput"  bindblur="titleBlur" wx:if="{{titleEdit}}"></input>
+        <input type="text" class="font-size-52" value="" placeholder='输入影集名' focus="autoFocus"
+          value="{{albumInfo.title}}" bindinput="titleInput" bindblur="titleBlur" wx:if="{{titleEdit}}"></input>
         <block wx:else>
-          <text>{{title}}</text>
+          <text>{{albumInfo.title}}</text>
           <text class="iconfont iconedit offset-rpx-ml-5" bindtap="titEditSwitch"></text>
         </block>
-        
+
       </view>
       <view class="info offset-rpx-mt-10 layout-flex-between">
         <view>
@@ -23,19 +24,23 @@
       </view>
     </view>
     <view class="date-photo-list">
-      <block wx:for="{{3}}" wx:key="index">
+      <block wx:for="{{albumInfo.photoList}}" wx:for-item="photos" wx:for-index="listIndex" wx:key="index">
         <view class="date layout-flex-between">
-          <view>08月10日</view>
-          <view class="all-sel" wx:if="{{isEdit}}">全选</view>  
+          <view>{{photos[0].created_at}}</view>
+          <view class="all-sel" data-list_index="{{listIndex}}" bindtap="allSel" wx:if="{{isEdit}}">全选</view>
         </view>
         <view class="photo-album-list">
-          <view class="album-item" wx:for="{{list}}" wx:key="index">
+          <view class="album-item" wx:for="{{photos}}" wx:for-item="photo" wx:for-index="photoIndex" wx:key="index">
             <view class="album-box">
-              <image src="{{imageUrl}}" alt="" mode="aspectFill"></image>
-              <view class="circle sel-circle layout-flex-center" wx:if="{{index < 2}}">
-                <text class="iconfont iconhook"></text>
-              </view>
-              <view class="circle" wx:else></view>
+              <image src="{{photo.path}}" alt="" mode="aspectFill"></image>
+              <block wx:if="{{isEdit}}">
+                <view class="circle sel-circle layout-flex-center" data-list_index="{{listIndex}}"
+                  data-photos_index="{{photoIndex}}" bindtap="photoSel" wx:if="{{photo.isSelect}}">
+                  <text class="iconfont iconhook"></text>
+                </view>
+                <view class="circle" data-list_index="{{listIndex}}" data-photos_index="{{photoIndex}}"
+                  bindtap="photoSel" wx:else></view>
+              </block>
             </view>
           </view>
         </view>
@@ -44,16 +49,16 @@
     <view class="bottom-opt" wx:if="{{isEdit}}">
       <view class="left-manage">
         <view class="cancel" bindtap="manageSwitch">
-          <text>取消（0）</text>
+          <text>取消（{{selList.length}}）</text>
         </view>
       </view>
       <view class="right-action">
-        <view class="layout-flex-between down-del">
-          <view>
+        <view class="layout-flex-between down-del {{selList.length ? 'down-del-op' : ''}}">
+          <view bindtap="downPhoto">
             <text class="iconfont icondownload"></text>
             <view class="offset-rpx-mt-3 desc">下载</view>
           </view>
-          <view>
+          <view bindtap="delPhoto">
             <text class="iconfont icondelete"></text>
             <view class="offset-rpx-mt-3 desc">删除</view>
           </view>

@@ -16,6 +16,19 @@ const yearConver = year => {
   return String(year).split('').map(item => dict[item]).join('')
 }
 
+const groupBy = (array, f) => {
+  let groups = {};
+  array.forEach(function (o) {
+    let group = JSON.stringify(f(o))
+    groups[group] = groups[group] || []
+    groups[group].push(o)
+  })
+  return Object.keys(groups).map(function (group) {
+    return groups[group]
+  });
+}
+
 module.exports = {
-  yearConver
+  yearConver,
+  groupBy
 }
