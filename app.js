@@ -1,6 +1,6 @@
 const domain = 'https://portal.fuyunfeng.top'
-// const apiBaseUrl = `${domain}/api`
-const apiBaseUrl = 'http://192.168.1.117:9098'
+const apiBaseUrl = `${domain}/api`
+// const apiBaseUrl = 'http://192.168.1.117:9098'
 
 module.exports.domain = domain
 module.exports.apiBaseUrl = apiBaseUrl

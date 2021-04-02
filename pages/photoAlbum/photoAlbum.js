@@ -82,11 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('userProfile', app.globalData.userProfile)
-    console.log('userInfo', app.globalData.userInfo)
-    if (app.globalData.userInfo?.openid) {
-      this.getAlbumList()
-    }
+    
   },
 
   /**
@@ -100,7 +96,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    console.log('userProfile', app.globalData.userProfile)
+    console.log('userInfo', app.globalData.userInfo)
+    if (app.globalData.userInfo?.openid) {
+      this.getAlbumList()
+    }
   },
 
   /**

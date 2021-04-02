@@ -12,7 +12,7 @@ Page({
       //   path: 'https://portal.fuyunfeng.top/files/images/applets-cat.jpg'
       // }
     ],
-    title: 'name',
+    title: '',
     tipShow: false,
     tipMsg: '',
     tipType: ''
@@ -82,9 +82,7 @@ Page({
         url: `${app.globalData.apiBaseUrl}/files/upload_file`,
         filePath: file.path,
         name: 'files',
-        formData: {
-          'title': this.data.title
-        },
+        formData: {},
         success(res) {
           const data = JSON.parse(res.data)
           resolve(data)

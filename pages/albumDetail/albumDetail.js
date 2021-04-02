@@ -15,7 +15,10 @@ Component({
     isEdit: false,
     titleEdit: false,
     id: null,
-    albumInfo: {}
+    albumInfo: {},
+    tipShow: false,
+    tipMsg: '',
+    tipType: ''
   },
 
   computed: {
@@ -25,6 +28,14 @@ Component({
   },
 
   methods: {
+    showTips(tipMsg = '', tipType = 'error') {
+      this.setData({
+        tipShow: true,
+        tipMsg,
+        tipType
+      })
+    },
+
     loveSwitch() {
       this.setData({
         isLove: !this.data.isLove
@@ -86,18 +97,28 @@ Component({
 
     downPhoto() {
       if (!this.data.selList.length) return
+      if (this.data.selList.length > 1) {
+        return this.showTips('当前只支持单张图片下载')
+      }
       const params = {
         photo_ids: this.data.selList.map(item => item.photo_id).join(',')
       }
       console.log('params', params)
       wx.downloadFile({
-        url: `${app.globalData.apiBaseUrl}/files/download_file?file_path`, //仅为示例，并非真实的资源
+        url: `${app.globalData.apiBaseUrl}/files/download_file?file_name=${this.data.selList[0].file_name}`, //仅为示例，并非真实的资源
         success (res) {
+          console.log('downloadFile res', res)
           // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
           if (res.statusCode === 200) {
-            wx.playVoice({
-              filePath: res.tempFilePath
-            })
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success(res) {
+                console.log('saveImageToPhotosAlbum res', res)
+              },
+              fail(error) {
+                console.log('error', error)
+              }
+            });
           }
         }
       })
@@ -148,8 +169,7 @@ Component({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      // const id = options.id || null
-      const id = 1
+      const id = options.id || null
       if (id) {
         this.setData({ id }, () => {
           this.getAlbumInfo()

@@ -1,4 +1,5 @@
 <view class="album-detail-container">
+  <mp-toptips msg="{{tipMsg}}" type="{{tipType}}" show="{{tipShow}}"></mp-toptips>
   <view class="album-detail-box">
     <view class="title-info">
       <view class="title font-size-52">
@@ -32,7 +33,7 @@
         <view class="photo-album-list">
           <view class="album-item" wx:for="{{photos}}" wx:for-item="photo" wx:for-index="photoIndex" wx:key="index">
             <view class="album-box">
-              <image src="{{photo.path}}" alt="" mode="aspectFill"></image>
+              <image src="{{photo.file_path}}" alt="" mode="aspectFill"></image>
               <block wx:if="{{isEdit}}">
                 <view class="circle sel-circle layout-flex-center" data-list_index="{{listIndex}}"
                   data-photos_index="{{photoIndex}}" bindtap="photoSel" wx:if="{{photo.isSelect}}">
