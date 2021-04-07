@@ -48,6 +48,10 @@ Component({
       })
     },
 
+    shareAlbum() {
+      return this.showTips('努力建设中')
+    },
+
     titEditSwitch() {
       this.setData({
         titleEdit: !this.data.titleEdit

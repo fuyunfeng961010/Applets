@@ -72,7 +72,7 @@
           <text class="iconfont iconmanage"></text>
           <view class="offset-rpx-mt-3 desc">批量管理</view>
         </view>
-        <view class="flex-1">
+        <view class="flex-1" bindtap="shareAlbum">
           <text class="iconfont iconshare"></text>
           <view class="offset-rpx-mt-3 desc">分享影集</view>
         </view>
