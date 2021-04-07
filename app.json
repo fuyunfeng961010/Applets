@@ -4,9 +4,7 @@
     "pages/photoAlbum/photoAlbum",
     "pages/albumDetail/albumDetail",
     "pages/newAlbum/newAlbum",
-    
     "pages/me/me"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

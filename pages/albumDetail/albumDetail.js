@@ -1,5 +1,5 @@
 const app = getApp()
-const { getAlbumInfo, updateAlbum, delPhotos } = require('../../utils/api/photoAlbum')
+const { getAlbumInfo, updateAlbum, delPhotos, addPhotos } = require('../../utils/api/photoAlbum')
 const computedBehavior = require('miniprogram-computed').behavior
 const moment = app.globalData.moment
 const helper = app.globalData.helper
@@ -78,6 +78,90 @@ Component({
     titleInput: function (e) {
       this.setData({
         ['albumInfo.title']: e.detail.value
+      })
+    },
+
+    addPhotos(upFiles) {
+      console.log('upFiles', upFiles)
+      const params = {
+        album_id: this.data.id,
+        photos: upFiles
+      }
+      addPhotos(params)
+      .then(res => {
+        if (res.data.result) {
+          this.getAlbumInfo()
+          wx.hideLoading()
+        }
+      })
+      .catch(error => {
+        wx.hideLoading()
+      })
+    },
+
+    async uploadAction() {
+      if (!this.data.imageList.length) {
+        return
+      }
+      wx.showLoading({
+        title: '上传中',
+      })
+  
+      let upFiles = []
+  
+      // 循环上传
+      const imgs = this.data.imageList
+      for (let i = 0; i < imgs.length; i++) {
+        const upResult = await this.uploadImgs(imgs[i])
+        console.log('upResult', upResult)
+        if (upResult.result) {
+          upFiles = [...upFiles, ...upResult.file_list]
+          if (i === imgs.length - 1) {
+            this.addPhotos(upFiles)
+          }
+          continue
+        }
+        wx.hideLoading()
+        this.showTips(upResult.msg)
+        return
+      }
+    },
+  
+    uploadImgs(file) {
+      return new Promise((resolve, reject) => {
+        const uploadTask = wx.uploadFile({
+          url: `${app.globalData.apiBaseUrl}/files/upload_file`,
+          filePath: file.path,
+          name: 'files',
+          formData: {},
+          success(res) {
+            const data = JSON.parse(res.data)
+            resolve(data)
+          },
+          fail(error) {
+            console.log('error', error)
+            resolve({
+              result: false,
+              msg: error.errMsg
+            })
+          }
+        })
+      })
+    },
+
+    upPhoto() {
+      wx.chooseImage({
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success: res => {
+          const imageList = res.tempFiles
+          console.log('res', res)
+          this.setData({
+            imageList
+          }, () => {
+            this.uploadAction()
+          })
+        }
       })
     },
 

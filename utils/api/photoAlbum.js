@@ -38,6 +38,14 @@ const delPhotos = params => {
   })
 }
 
+const addPhotos = params => {
+  return wechatApp.request({
+    method: 'POST',
+    path: '/photoAlbum/add_photos',
+    params
+  })
+}
+
 const updateAlbum = params => {
   return wechatApp.request({
     method: 'POST',
@@ -52,5 +60,6 @@ module.exports = {
   getAlbumList,
   getAlbumInfo,
   updateAlbum,
-  delPhotos
+  delPhotos,
+  addPhotos
 }

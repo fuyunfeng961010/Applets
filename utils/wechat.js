@@ -11,6 +11,7 @@ class Wechat {
         url: this.apiUrl + option.path,
         data: Object.assign({openid}, option.params),
         method: option.method || 'GET',
+        timeout: 5000,
         header: {
         },
         success: resolve,
@@ -25,6 +26,13 @@ class Wechat {
           Promise.resolve(data);
         }
         return Promise.resolve(data);
+      })
+      .catch(error => {
+        console.log('error', error)
+        Promise.reject(error.errMsg)
+        setTimeout(() => {
+          this.wxDialog('none', error.errMsg)
+        }, 200)
       })
   };
 }
