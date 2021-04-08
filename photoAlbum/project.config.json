@@ -6,38 +6,46 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
+    "enhance": true,
     "postcss": true,
     "minified": true,
     "newFeature": true,
     "coverView": true,
+    "nodeModules": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "useMultiFrameRuntime": true,
     "bundle": false,
-    "useApiHook": true,
-    "useApiHostProcess": false
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.4.0",
+  "libVersion": "2.11.2",
   "appid": "wx38e9f9835b60acec",
-  "projectname": "Applets",
-  "cloudfunctionTemplateRoot": "",
-  "watchOptions": {
-    "ignore": []
-  },
+  "projectname": "photoAlbum",
   "debugOptions": {
     "hidedInDevtools": []
   },
-  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []
@@ -45,13 +53,8 @@
     "conversation": {
       "list": []
     },
-    "plugin": {
-      "list": []
-    },
     "game": {
-      "list": []
-    },
-    "gamePlugin": {
+      "currentL": -1,
       "list": []
     },
     "miniprogram": {
