@@ -1,6 +1,11 @@
+const accountInfo = wx.getAccountInfoSync();
+const { envVersion } = accountInfo.miniProgram
+
 const domain = 'https://portal.fuyunfeng.top'
-const apiBaseUrl = `${domain}/api`
-// const apiBaseUrl = 'http://192.168.1.117:9098'
+let apiBaseUrl = `${domain}/api`
+if (envVersion === 'develop') {
+  apiBaseUrl = `http://192.168.1.117:9098`
+}
 
 module.exports.domain = domain
 module.exports.apiBaseUrl = apiBaseUrl
