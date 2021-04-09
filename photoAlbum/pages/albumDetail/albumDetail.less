@@ -80,12 +80,24 @@ page {
               position: relative;
               vertical-align: middle;
     
-              image {
+              image, video {
                 position: absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
                 height: 100%;
+              }
+
+              .video {
+                width: 40rpx;
+                height: 40rpx;
+                position: absolute;
+                bottom: 10rpx;
+                left: 10rpx;
+                .iconvideo::before {
+                  font-size: 35rpx;
+                  color: white;
+                }
               }
 
               .circle {

@@ -68,12 +68,24 @@ page .album-detail-container .album-detail-box .date-photo-list .photo-album-lis
   position: relative;
   vertical-align: middle;
 }
-page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box image {
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box image,
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box video {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+}
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .video {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: 10rpx;
+  left: 10rpx;
+}
+page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .video .iconvideo::before {
+  font-size: 35rpx;
+  color: white;
 }
 page .album-detail-container .album-detail-box .date-photo-list .photo-album-list .album-item .album-box .circle {
   width: 40rpx;

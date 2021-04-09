@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    defaultImg: 'https://portal.fuyunfeng.top/files/images/404.jpg',
+    defaultImg: 'https://portal.fuyunfeng.top/files/images/placeholder-default.png',
     albumList: []
   },
 

@@ -18,7 +18,8 @@ Component({
     albumInfo: {},
     tipShow: false,
     tipMsg: '',
-    tipType: ''
+    tipType: '',
+    mediaList: []
   },
 
   computed: {
@@ -85,6 +86,24 @@ Component({
       })
     },
 
+    photoPreview(e) {
+      const { photo } = e.currentTarget.dataset
+      console.log('photo', photo)
+      if (photo.file_type === 'image') {
+        return wx.previewImage({
+          urls: this.data.albumInfo.photos.filter(item => item.file_type === 'image').map(item => item.file_path),
+          showmenu: true,
+          current: photo.file_path
+        })
+      }
+
+      if (photo.file_type === 'video') {
+        wx.navigateTo({
+          url: `/pages/videoPreview/videoPreview?file_path=${photo.file_path}`
+        })
+      }
+    },
+
     addPhotos(upFiles) {
       console.log('upFiles', upFiles)
       const params = {
@@ -103,8 +122,21 @@ Component({
       })
     },
 
+    async uploadThumb(medias, upFiles) {
+      for (let i = 0; i < medias.length; i++) {
+        const upResult = await this.uploadFile(medias[i], 'thumbTempFilePath')
+        if (upResult.result) {
+          upFiles[i]['file_thumb_image_path'] = upResult.file_list[0].file_path
+          if (i === medias.length - 1) {
+            this.addPhotos(upFiles)
+          }
+          continue
+        }
+      }
+    },
+
     async uploadAction() {
-      if (!this.data.imageList.length) {
+      if (!this.data.mediaList.length) {
         return
       }
       wx.showLoading({
@@ -114,14 +146,20 @@ Component({
       let upFiles = []
   
       // 循环上传
-      const imgs = this.data.imageList
-      for (let i = 0; i < imgs.length; i++) {
-        const upResult = await this.uploadImgs(imgs[i])
-        console.log('upResult', upResult)
+      const medias = this.data.mediaList
+      for (let i = 0; i < medias.length; i++) {
+        const upResult = await this.uploadFile(medias[i])
         if (upResult.result) {
+          upResult.file_list[0]['file_type'] = medias[i].fileType
           upFiles = [...upFiles, ...upResult.file_list]
-          if (i === imgs.length - 1) {
-            this.addPhotos(upFiles)
+          if (i === medias.length - 1) {
+            // console.log('medias', medias)
+            // console.log('upFiles', upFiles)
+            if (medias[0].fileType === 'image') {
+              return this.addPhotos(upFiles)
+            }
+            // 视频 缩略图上传
+            this.uploadThumb(medias, upFiles)
           }
           continue
         }
@@ -131,11 +169,11 @@ Component({
       }
     },
   
-    uploadImgs(file) {
+    uploadFile(file, targetPath = null) {
       return new Promise((resolve, reject) => {
         const uploadTask = wx.uploadFile({
           url: `${app.globalData.apiBaseUrl}/files/upload_file`,
-          filePath: file.path,
+          filePath: targetPath ? file[targetPath] : file.tempFilePath,
           name: 'files',
           formData: {},
           success(res) {
@@ -153,15 +191,16 @@ Component({
       })
     },
 
-    upPhoto() {
-      wx.chooseImage({
-        sizeType: ['original', 'compressed'],
+    uploadMedia() {
+      wx.chooseMedia({
+        mediaType: ['image','video'],
         sourceType: ['album', 'camera'],
+        maxDuration: 30,
         success: res => {
-          const imageList = res.tempFiles
-          console.log('res', res)
+          // console.log('res', res)
+          const mediaList = res.tempFiles
           this.setData({
-            imageList
+            mediaList
           }, () => {
             this.uploadAction()
           })
@@ -174,7 +213,6 @@ Component({
       const params = {
         photo_ids: this.data.selList.map(item => item.photo_id).join(',')
       }
-      console.log('params', params)
       delPhotos(params)
       .then(res => {
         if (res.data.result) {
@@ -191,11 +229,9 @@ Component({
       const params = {
         photo_ids: this.data.selList.map(item => item.photo_id).join(',')
       }
-      console.log('params', params)
       wx.downloadFile({
-        url: `${app.globalData.apiBaseUrl}/files/download_file?file_name=${this.data.selList[0].file_name}`, //仅为示例，并非真实的资源
+        url: `${app.globalData.apiBaseUrl}/files/download_file?file_name=${this.data.selList[0].file_name}`,
         success (res) {
-          console.log('downloadFile res', res)
           // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
           if (res.statusCode === 200) {
             wx.saveImageToPhotosAlbum({

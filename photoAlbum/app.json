@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/photoAlbum/photoAlbum",
+    "pages/index/index",
     "pages/albumDetail/albumDetail",
     "pages/newAlbum/newAlbum",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/videoPreview/videoPreview"
   ],
   "window": {
     "backgroundTextStyle": "light",

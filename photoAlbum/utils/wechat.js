@@ -11,7 +11,7 @@ class Wechat {
         url: this.apiUrl + option.path,
         data: Object.assign({openid}, option.params),
         method: option.method || 'GET',
-        timeout: 5000,
+        timeout: 10000,
         header: {
         },
         success: resolve,

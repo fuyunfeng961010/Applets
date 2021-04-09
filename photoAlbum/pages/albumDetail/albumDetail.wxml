@@ -33,7 +33,10 @@
         <view class="photo-album-list">
           <view class="album-item" wx:for="{{photos}}" wx:for-item="photo" wx:for-index="photoIndex" wx:key="index">
             <view class="album-box">
-              <image src="{{photo.file_path}}" alt="" mode="aspectFill"></image>
+              <image src="{{photo.file_thumb_image_path || photo.file_path}}" alt="" mode="aspectFill" data-photo="{{photo}}" bindtap="photoPreview"></image>
+              <view class="video layout-flex-center" wx:if="{{photo.file_type === 'video'}}">
+                <text class="iconfont iconvideo"></text>
+              </view>
               <block wx:if="{{isEdit}}">
                 <view class="circle sel-circle layout-flex-center" data-list_index="{{listIndex}}"
                   data-photos_index="{{photoIndex}}" bindtap="photoSel" wx:if="{{photo.isSelect}}">
@@ -79,7 +82,7 @@
         <view class="flex-1"></view>
         <view class="flex-1"></view>
       </view>
-      <view class="right-action" bindtap="upPhoto">
+      <view class="right-action" bindtap="uploadMedia">
         <view class="upload layout-flex-center">上传</view>
       </view>
     </view>
