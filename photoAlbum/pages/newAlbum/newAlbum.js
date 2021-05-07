@@ -63,7 +63,7 @@ Page({
       const upResult = await this.uploadImgs(imgs[i])
       console.log('upResult', upResult)
       if (upResult.result) {
-        upResult.file_list[0]['fileType'] = 'image'
+        upResult.file_list[0]['file_type'] = 'image'
         upFiles = [...upFiles, ...upResult.file_list]
         if (i === imgs.length - 1) {
           console.log('upFiles', upFiles)
