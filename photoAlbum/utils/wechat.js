@@ -6,7 +6,7 @@ class Wechat {
 
   request(option = {}) {
     return new Promise((resolve, reject) => {
-      const openid = this.app.globalData.userInfo?.openid || null
+      const openid = this.app.globalData.isPublish ? this.app.globalData.userInfo?.openid || null : 'oRBIf0a90nMAB9FBWrOAi0d6OewA'
       let opts = {
         url: this.apiUrl + option.path,
         data: Object.assign({openid}, option.params),

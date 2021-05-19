@@ -13,6 +13,7 @@ Page({
 
   toNewAlbum() {
     if (app.globalData.userInfo?.openid) {
+      if (!app.globalData.isPublish) return
       return wx.navigateTo({
         url: '../newAlbum/newAlbum'
       })
@@ -40,7 +41,7 @@ Page({
 
   getUserInfo() {
     wx.login({
-      success(res) {
+      success: (res) => {
         console.log('res', res)
         if (res.code) {
           const params = {
@@ -56,6 +57,7 @@ Page({
                   data: JSON.stringify({ ...res.data.data, timestamp: new Date().getTime() }),
                 })
                 app.globalData.userInfo = res.data.data
+                if (!app.globalData.isPublish) return this.getAlbumList()
                 wx.navigateTo({
                   url: '../newAlbum/newAlbum'
                 })

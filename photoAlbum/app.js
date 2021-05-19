@@ -4,7 +4,7 @@ const { envVersion } = accountInfo.miniProgram
 const domain = 'https://portal.fuyunfeng.top'
 let apiBaseUrl = `${domain}/api`
 if (envVersion === 'develop') {
-  apiBaseUrl = `http://192.168.1.116:9098`
+  apiBaseUrl = `http://localhost:9001`
 }
 
 module.exports.domain = domain
@@ -66,6 +66,7 @@ App({
     domain,
     apiBaseUrl,
     userProfile: null,
-    userInfo: null
+    userInfo: null,
+    isPublish: false
   }
 })

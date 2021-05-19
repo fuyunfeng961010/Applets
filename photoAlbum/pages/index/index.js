@@ -60,6 +60,7 @@ Page({
       .then(res => {
         if (res.data.result) {
           console.log('res', res.data.data)
+          app.globalData.isPublish = res.data.isPublish
           const hisList = res.data.data
           hisList.forEach(item => {
             item.content = item.content.replace(/<img/g, '<img style="max-width:100%; height:auto;"')

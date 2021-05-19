@@ -44,6 +44,7 @@ Component({
     },
 
     manageSwitch() {
+      if (!app.globalData.isPublish) return this.showTips('努力建设中')
       this.setData({
         isEdit: !this.data.isEdit
       })
@@ -192,6 +193,7 @@ Component({
     },
 
     uploadMedia() {
+      if (!app.globalData.isPublish) return this.showTips('努力建设中')
       wx.chooseMedia({
         mediaType: ['image','video'],
         sourceType: ['album', 'camera'],
