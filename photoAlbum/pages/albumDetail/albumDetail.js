@@ -99,6 +99,7 @@ Component({
       }
 
       if (photo.file_type === 'video') {
+        if (!app.globalData.isPublish) return this.showTips('视频资源暂未支持播放')
         wx.navigateTo({
           url: `/pages/videoPreview/videoPreview?file_path=${photo.file_path}`
         })

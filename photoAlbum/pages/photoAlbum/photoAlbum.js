@@ -8,12 +8,23 @@ Page({
    */
   data: {
     defaultImg: 'https://portal.fuyunfeng.top/files/images/placeholder-default.png',
-    albumList: []
+    albumList: [],
+    tipShow: false,
+    tipMsg: '',
+    tipType: '',
+  },
+
+  showTips(tipMsg = '', tipType = 'error') {
+    this.setData({
+      tipShow: true,
+      tipMsg,
+      tipType
+    })
   },
 
   toNewAlbum() {
     if (app.globalData.userInfo?.openid) {
-      if (!app.globalData.isPublish) return
+      if (!app.globalData.isPublish) return this.showTips('努力建设中')
       return wx.navigateTo({
         url: '../newAlbum/newAlbum'
       })
