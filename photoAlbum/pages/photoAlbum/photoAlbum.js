@@ -12,6 +12,7 @@ Page({
     tipShow: false,
     tipMsg: '',
     tipType: '',
+    app: {}
   },
 
   showTips(tipMsg = '', tipType = 'error') {
@@ -24,7 +25,7 @@ Page({
 
   toNewAlbum() {
     if (app.globalData.userInfo?.openid) {
-      if (!app.globalData.isPublish) return this.showTips('努力建设中')
+      if (!app.globalData.isPublish) return this.showTips('您已登录')
       return wx.navigateTo({
         url: '../newAlbum/newAlbum'
       })
@@ -109,6 +110,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      app: app
+    })
     console.log('userProfile', app.globalData.userProfile)
     console.log('userInfo', app.globalData.userInfo)
     if (app.globalData.userInfo?.openid) {

@@ -69,7 +69,7 @@
         </view>
       </view>
     </view>
-    <view class="bottom-opt" wx:else>
+    <view class="bottom-opt" wx:if="{{app.globalData.isPublish && !isEdit}}">
       <view class="left-manage">
         <view class="flex-1" bindtap="manageSwitch">
           <text class="iconfont iconmanage"></text>
