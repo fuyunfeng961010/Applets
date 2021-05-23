@@ -8,7 +8,7 @@
       <view class="font-size-32 offset-rpx-mt-5 album-title">{{item.title}}</view>
       <view class="font-size-30 color-ccc">{{item.photos.length}}张</view>
     </view>
-    <view class="album-item" bindtap="toNewAlbum">
+    <view class="album-item" bindtap="toNewAlbum" wx:if="{{app.globalData.isPublish}}">
       <view class="album-box album-box-add">
         <text class="iconfont iconadd album-add-icon"></text>
       </view>

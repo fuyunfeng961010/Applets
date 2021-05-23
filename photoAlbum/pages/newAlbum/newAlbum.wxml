@@ -1,4 +1,4 @@
-<view class="new-album-container">
+<view class="new-album-container" wx:if="{{app.globalData.isPublish}}">
   <mp-toptips msg="{{tipMsg}}" type="{{tipType}}" show="{{tipShow}}"></mp-toptips>
   <view class="new-album-form">
     <view class="album-name border1rpx-bottom">

@@ -113,6 +113,9 @@ Page({
     this.setData({
       app: app
     })
+    if (!app.globalData.isPublish) {
+      return this.getAlbumList()
+    }
     console.log('userProfile', app.globalData.userProfile)
     console.log('userInfo', app.globalData.userInfo)
     if (app.globalData.userInfo?.openid) {

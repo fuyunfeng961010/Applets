@@ -52,6 +52,9 @@ Page({
 	},
 
   getTodayInfo() {
+    wx.showLoading({
+      title: '加载中',
+    })
     const params = {
       month: new Date().getMonth() + 1,
       day:  new Date().getDate()
@@ -67,6 +70,8 @@ Page({
           })
           this.setData({
             todayHisInfo: hisList
+          }, () => {
+            wx.hideLoading()
           })
         }
       })

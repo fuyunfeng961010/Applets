@@ -15,7 +15,8 @@ Page({
     title: '',
     tipShow: false,
     tipMsg: '',
-    tipType: ''
+    tipType: '',
+    app: {}
   },
 
   showTips(tipMsg = '', tipType = 'error') {
@@ -161,7 +162,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      app: app
+    })
   },
 
   /**

@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/photoAlbum/photoAlbum",
     "pages/albumDetail/albumDetail",
-    "pages/newAlbum/newAlbum",
     "pages/me/me"
   ],
   "window": {

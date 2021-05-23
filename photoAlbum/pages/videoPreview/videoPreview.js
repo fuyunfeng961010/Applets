@@ -1,3 +1,4 @@
+const app = getApp()
 function getRandomColor() {
   const rgb = []
   for (let i = 0; i < 3; ++i) {
@@ -20,6 +21,11 @@ Page({
       src: options.file_path
     })
   },
+  onShow: function () {
+    this.setData({
+      app: app
+    })
+  },
   inputValue: '',
   data: {
     src: '',
@@ -33,7 +39,8 @@ Page({
         text: '第 3s 出现的弹幕',
         color: '#ff00ff',
         time: 3
-      }]
+      }],
+    app: {}
   },
   bindInputBlur: function (e) {
     this.inputValue = e.detail.value
